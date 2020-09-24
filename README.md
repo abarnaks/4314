@@ -1,6 +1,6 @@
 
 
-## Campus Covid Tracker
+### EECS 4314 - Advanced Software Engineering
 
 
 **Team Members:**
