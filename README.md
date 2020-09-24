@@ -1,7 +1,6 @@
-## Welcome to Team2021's Webpage
-### EECS 4314 Project
 
-#Campus Covid Tracker
+
+## Campus Covid Tracker
 
 
 **Team Members:**
