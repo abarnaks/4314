@@ -1,10 +1,8 @@
 
 
-### EECS 4314
+#### EECS 4314
 
-
-
-**Team Members:**
+##### **Team Members:**
 
 - Abarna Kucheri Subburaman
 - Elijah Nnorom
@@ -13,5 +11,10 @@
 - Risheed Malatombee
 
 
-**Project Proposal**
-<iframe src="https://yuoffice.sharepoint.com/sites/YORK-EECS4314-Team20212/_layouts/15/Doc.aspx?sourcedoc={4a4d11b4-d64e-46e2-9e98-25b1292a7c04}&amp;action=embedview&amp;wdStartOn=1" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+##### **Project Documentation**
+
+**Proposal** [change link to doc](https://github.com/abarnaks/4314 "redirects to repo")
+
+**Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Covid tracker repository")
+
+
