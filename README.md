@@ -13,7 +13,7 @@
 
 ##### **Project Documentation**
 
-**Proposal** [change link to doc](https://github.com/abarnaks/4314 "redirects to repo")
+**Proposal** [Document pdf](https://drive.google.com/file/d/1CzbpREaRxp7c1UdRzS_f-MabqKMgf4ja/view?usp=sharing "Proposal document")
 
 **Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Covid tracker repository")
 
