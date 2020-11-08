@@ -1,4 +1,5 @@
-package com.example.CampusCheckin;
+package campusCheckin;
+
 
 import java.util.Objects;
 

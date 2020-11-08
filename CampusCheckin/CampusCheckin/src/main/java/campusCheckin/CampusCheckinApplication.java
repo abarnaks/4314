@@ -1,4 +1,4 @@
-package com.example.CampusCheckin;
+package campusCheckin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
