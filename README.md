@@ -17,6 +17,10 @@
 
 **Architecture** [Document pdf](https://drive.google.com/file/d/1jgQFd4eAiWMSj1cX76e2AYPBYMP_Su3K/view?usp=sharing "Architecture document")
 
-**Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Covid tracker repository")
+**Concrete Architecture** Coming soon...
+
+**Prototype 0.1** Coming soon...
+
+**Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
 
 
