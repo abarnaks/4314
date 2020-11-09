@@ -57,7 +57,7 @@ public class RoomController {
     EntityModel<Room> one(@PathVariable Long id) {
 
         Room room = repository.findById(id) //
-                .orElseThrow(() -> new RoomNotFoundException(id));
+                .orElseThrow(() -> new NotFoundException("room",id));
 
         return assembler.toModel(room);
     }

@@ -11,60 +11,60 @@ import javax.persistence.Id;
 class User {
 
     private @Id @GeneratedValue Long id;
-    private String firstName;
-    private String lastName;
-    private String role;
+    private String name;
+    private String studentID;
+    private String email;
+    private String password; //this needs to change in future with protection
 
     User() {
     }
 
-    User(String firstName, String lastName, String role) {
+    User(String name, String studentID, String email, String password) {
 
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
+        this.name = name;
+        this.studentID = studentID;
+        this.email = email;
+        this.password = password;
     }
 
+    
     public String getName() {
-        return this.firstName + " " + this.lastName;
+   	 	return this.name;
     }
-
     public void setName(String name) {
-        String[] parts = name.split(" ");
-        this.firstName = parts[0];
-        this.lastName = parts[1];
+    	 this.name = name;
     }
 
     public Long getId() {
         return this.id;
     }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public String getRole() {
-        return this.role;
-    }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getStudentID() {
+        return this.studentID;
+    }
+    
+    public void setStudentID(String StudentID) {
+        this.studentID = StudentID;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getEmail() {
+        return this.email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -75,17 +75,18 @@ class User {
         if (!(o instanceof User))
             return false;
         User user = (User) o;
-        return Objects.equals(this.id, user.id) && Objects.equals(this.firstName, user.firstName) && Objects.equals(this.lastName, user.lastName)
-                && Objects.equals(this.role, user.role);
+        return Objects.equals(this.id, user.id) && Objects.equals(this.name, user.name) && Objects.equals(this.studentID, user.studentID)
+                && Objects.equals(this.email, user.email)  && Objects.equals(this.password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.firstName, this.lastName, this.role);
+        return Objects.hash(this.id, this.name, this.studentID, this.email, this.password);
     }
-
+    
+    //Not gonna output password
     @Override
     public String toString() {
-        return "Employee{" + "id=" + this.id + ", firstName='" + this.firstName + '\'' + ", lastName='" + this.lastName + '\'' + ", role='" + this.role + '\'' + '}';
+        return "Employee{" + "id=" + this.id + ", name='" + this.name + '\'' + ", studentID='" + this.studentID + '\'' + ", email='" + this.email + '\'' + '}';
     }
 }

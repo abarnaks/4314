@@ -1,5 +1,4 @@
 package campusCheckin;
-
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -20,32 +19,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BuildingController {
-	
-	private final BuildingRepository repository;
-    private BuildingModelAssembler assembler;
+public class BookingController {
+	private final BookingRepository repository;
+    private BookingModelAssembler assembler;
     
-    public BuildingController(BuildingRepository repository, BuildingModelAssembler assembler) {
+    public BookingController(BookingRepository repository, BookingModelAssembler assembler) {
         this.repository = repository;
         this.assembler = assembler;
         
     }
     
-    @GetMapping("/buildings")
-    public CollectionModel<EntityModel<Building>> all() {
+    @GetMapping("/bookings")
+    public CollectionModel<EntityModel<Booking>> all() {
 
-        List<EntityModel<Building>> buildings = repository.findAll()
+        List<EntityModel<Booking>> books = repository.findAll()
                 .stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(buildings, linkTo(methodOn(BuildingController.class).all()).withSelfRel());
+        return CollectionModel.of(books, linkTo(methodOn(RoomController.class).all()).withSelfRel());
     }
     
-    @PostMapping("/buildings")
-    public ResponseEntity<?> newBuilding(@RequestBody Building newBuilding) {
+    @PostMapping("/bookings")
+    public ResponseEntity<?> newBooking(@RequestBody Booking newBooking) {
 
-        EntityModel<Building> entityModel = assembler.toModel(repository.save(newBuilding));
+        EntityModel<Booking> entityModel = assembler.toModel(repository.save(newBooking));
 
         return ResponseEntity 
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
@@ -53,12 +51,12 @@ public class BuildingController {
     }
 
     // Single item
-    @GetMapping("/building/{id}")
-    EntityModel<Building> one(@PathVariable Long id) {
+    @GetMapping("/booking/{id}")
+    EntityModel<Booking> one(@PathVariable Long id) {
 
-        Building build = repository.findById(id) //
-                .orElseThrow(() -> new NotFoundException("building",id));
+        Booking book = repository.findById(id) //
+                .orElseThrow(() -> new NotFoundException("booking",id));
 
-        return assembler.toModel(build);
+        return assembler.toModel(book);
     }
 }
