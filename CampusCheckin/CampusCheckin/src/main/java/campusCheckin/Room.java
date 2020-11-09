@@ -12,25 +12,25 @@ public class Room {
 	 private @Id @GeneratedValue Long room_id;
 	 private String room_name;
 	 private int max_capacity;
-	 private int building_id;
+	 private Long building_id;
 	 
 	 
-	 Room() {
+	 public Room() {
 		 
 	 }
 	 
-	 Room(String room_name, int max_capacity, int building_id) {
+	 public Room(String room_name, int max_capacity, Long building_id) {
 
 	        this.room_name = room_name;
 	        this.max_capacity = max_capacity;
 	        this.building_id = building_id;
 	 }
 	 
-	 public String room_name() {
+	 	public String getRoom_name() {
 	        return this.room_name;
 	    }
 
-	    public void room_name(String name) {
+	    public void setRoom_name(String name) {
 	    	 this.room_name = name;
 	    }
 
@@ -42,7 +42,7 @@ public class Room {
 	        this.room_id = id;
 	    }
 
-	    public int max_capacity() {
+	    public int getMax_capacity() {
 	        return this.max_capacity;
 	    }
 	    
@@ -51,11 +51,11 @@ public class Room {
 	    }
 
 	   
-	    public int getBuilding_id() {
+	    public Long getBuilding_id() {
 	        return this.building_id;
 	    }
 
-	    public void setBuilding_id(int id) {
+	    public void setBuilding_id(Long id) {
 	        this.building_id = id;
 	    }
 
@@ -65,7 +65,7 @@ public class Room {
 
 	        if (this == o)
 	            return true;
-	        if (!(o instanceof User))
+	        if (!(o instanceof Room))
 	            return false;
 	        Room room = (Room) o;
 	        return Objects.equals(this.room_id, room.room_id) && Objects.equals(this.room_name, room.room_name) && Objects.equals(this.max_capacity, room.max_capacity)

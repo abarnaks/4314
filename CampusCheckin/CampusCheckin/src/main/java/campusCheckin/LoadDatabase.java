@@ -27,7 +27,7 @@ class LoadDatabase {
               log.info("Preloaded " + order);
             });
             
-            log.info("Preloading " + roomRepository.save(new Room("room1", 10, 10)));
+            log.info("Preloading " + roomRepository.save(new Room("room1", 10, 12345678910L)));
             //log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
             
           //  log.info("testing" + roomRepository.findAll());
