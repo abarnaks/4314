@@ -20,32 +20,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RoomController {
+public class BuildingController {
 	
-	private final RoomRepository repository;
-    private RoomModelAssembler assembler;
+	private final BuildingRepository repository;
+    private BuildingModelAssembler assembler;
     
-    public RoomController(RoomRepository repository, RoomModelAssembler assembler) {
+    public BuildingController(BuildingRepository repository, BuildingModelAssembler assembler) {
         this.repository = repository;
         this.assembler = assembler;
         
     }
     
-    @GetMapping("/rooms")
-    public CollectionModel<EntityModel<Room>> all() {
+    @GetMapping("/buildings")
+    public CollectionModel<EntityModel<Building>> all() {
 
-        List<EntityModel<Room>> rooms = repository.findAll()
+        List<EntityModel<Building>> buildings = repository.findAll()
                 .stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(rooms, linkTo(methodOn(RoomController.class).all()).withSelfRel());
+        return CollectionModel.of(buildings, linkTo(methodOn(BuildingController.class).all()).withSelfRel());
     }
     
-    @PostMapping("/rooms")
-    public ResponseEntity<?> newRoom(@RequestBody Room newRoom) {
+    @PostMapping("/buildings")
+    public ResponseEntity<?> newBuilding(@RequestBody Building newBuilding) {
 
-        EntityModel<Room> entityModel = assembler.toModel(repository.save(newRoom));
+        EntityModel<Building> entityModel = assembler.toModel(repository.save(newBuilding));
 
         return ResponseEntity 
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
@@ -53,14 +53,12 @@ public class RoomController {
     }
 
     // Single item
-    @GetMapping("/room/{id}")
-    EntityModel<Room> one(@PathVariable Long id) {
+    @GetMapping("/building/{id}")
+    EntityModel<Building> one(@PathVariable Long id) {
 
-        Room room = repository.findById(id) //
+        Building build = repository.findById(id) //
                 .orElseThrow(() -> new RoomNotFoundException(id));
 
-        return assembler.toModel(room);
+        return assembler.toModel(build);
     }
-	
-	
 }
