@@ -21,6 +21,27 @@ public class CampusCheckinController {
       return "hello";
    }
    
+   @RequestMapping("/login")
+   public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+      model.addAttribute("username", username);
+      model.addAttribute("password", password);
+      return "homelogin";
+   }
+   
+   @RequestMapping("/booking")
+   public String book() {
+      //model.addAttribute("name", name);
+	  // model.addAttribute("username", username);
+	  // model
+      return "booking";
+   }
+   
+   @RequestMapping("/confirmation")
+   public String confirmation() {
+      //model.addAttribute("name", name);
+      return "confirmation";
+   }
+   
 	@GetMapping({"/greeting"})
 	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);
