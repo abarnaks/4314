@@ -69,7 +69,7 @@ function validate() {
     <form action="users" method="post" onsubmit="return validate()">
       <table>
         <tr>
-          <td>Enter Your name</td>
+          <td>Enter Your user name</td>
           <td><input id="name" name="name"></td>
           <tr></tr>
           <td>Enter Your studentID</td>

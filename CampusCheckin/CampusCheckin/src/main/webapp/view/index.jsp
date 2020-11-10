@@ -69,15 +69,9 @@ function validate() {
     <form action="users" method="post" onsubmit="return validate()">
       <table>
         <tr>
-          <td>Enter Your name</td>
+          <td>Enter Your username</td>
           <td><input id="name" name="name"></td>
           <tr></tr>
-          <td>Enter Your studentID</td>
-          <td><input id="studid" name="studid"></td>    
-           <tr></tr>     
-          <td>Enter Your email</td>
-          <td><input id="em" name="em"></td> 
-           <tr></tr>
           <td>Enter Your password</td>
           <td><input type="password" id="pass" name="pass"></td> 
            <tr></tr>
@@ -85,6 +79,7 @@ function validate() {
         </tr>
       </table>
     </form>
+    <p>Don't have an account...<a href="/signup">Sign up here!</a></p>
   </div>
 
 </body>

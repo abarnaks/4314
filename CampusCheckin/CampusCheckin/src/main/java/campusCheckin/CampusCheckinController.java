@@ -26,6 +26,12 @@ public class CampusCheckinController {
       return "hello";
    }
    
+   @RequestMapping("/signup")
+   public String signupPage() {
+     // model.addAttribute("username", username);
+     // model.addAttribute("password", password);
+      return "createProfile";
+   }
    
    
    @RequestMapping("/login")
