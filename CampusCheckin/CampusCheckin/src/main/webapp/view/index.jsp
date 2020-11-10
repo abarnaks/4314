@@ -14,16 +14,22 @@ pageEncoding="ISO-8859-1"%>
 <body>
   <h1>Spring Boot - MVC web application example</h1>
   <hr>
-
   <div class="form">
-    <form action="hello" method="post" onsubmit="return validate()">
+    <form action="users" method="post" onsubmit="return validate()">
       <table>
         <tr>
           <td>Enter Your name</td>
           <td><input id="name" name="name"></td>
+          <tr></tr>
           <td>Enter Your studentID</td>
-          <td><input id="studid" name="studid"></td>         
-          
+          <td><input id="studid" name="studid"></td>    
+           <tr></tr>     
+          <td>Enter Your email</td>
+          <td><input id="em" name="em"></td> 
+           <tr></tr>
+          <td>Enter Your password</td>
+          <td><input id="pass" name="pass"></td> 
+           <tr></tr>
           <td><input type="submit" value="Submit"></td>
         </tr>
       </table>

@@ -7,6 +7,6 @@
 <title>View Rooms and Availability</title>
 </head>
 <body>
-
+	<p> HELLO WORLD </p>
 </body>
 </html>

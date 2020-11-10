@@ -1,5 +1,6 @@
 package campusCheckin;
 
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,17 +11,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CampusCheckinController {
 
+   
    @RequestMapping("/")
    public String index() {
       return "index";
    }
 
    @PostMapping("/hello")
-   public String sayHello(@RequestParam("name") String name, @RequestParam("studid") String studid, Model model) {
+   public String sayHello(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, Model model) {
       model.addAttribute("name", name);
       model.addAttribute("studid", studid);
+      model.addAttribute("em", em);
+      
       return "hello";
    }
+   
+   
    
    @RequestMapping("/login")
    public String login() {

@@ -10,12 +10,16 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -44,14 +48,31 @@ class UserController {
     }
 
     @PostMapping("/users")
-    ResponseEntity<?> newEmployee(@RequestBody User newEmployee) {
+    public String newEmployee(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
+    	
+    	User newUser = new User(name,studid,em,pass);
+        EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
 
-        EntityModel<User> entityModel = assembler.toModel(repository.save(newEmployee));
-
-        return ResponseEntity 
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-                .body(entityModel);
+        return "booking";
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
     }
+   
+    public void addUser(String name, String studid, String em ,String pass) {
+    	User newUser = new User(name,studid,em,pass);
+        EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
+    }
+    
+//    @PostMapping("/users")
+//    ResponseEntity<?> newEmployee(@RequestBody User newUser) {
+//
+//        EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
+//
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
+//    }
 
     // Single item
     @GetMapping("/users/{id}")
