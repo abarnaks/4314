@@ -24,4 +24,19 @@ function validate() {
 	else {
 		return true;
 	}
+	
+	
+}
+
+function postUsers() {
+	var name = document.getElementById("name").value;
+	var studentID = document.getElementById("studentID").value;
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
+	fetch('/users' , {method: 'POST', body: {"name":`${name}`,"studentID":`${studentID}`,"email":`${email}`,"password":`${password}`}})
+		.then(results => results.json()).then(console.log)
+}
+
+function test() {
+	console.log("working")
 }

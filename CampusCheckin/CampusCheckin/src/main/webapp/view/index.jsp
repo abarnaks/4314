@@ -6,8 +6,59 @@ pageEncoding="ISO-8859-1"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <!-- Static content -->
-<link rel="stylesheet" href="/resources/static/css/main.css">
-<script type="text/javascript" src="/resources/static/js/main.js"></script>
+
+
+<script>
+
+function postUsers() {
+	var name = document.getElementById("name").value;
+	var studentID = document.getElementById("studid").value;
+	var email = document.getElementById("em").value;
+	var password = document.getElementById("pass").value;
+	fetch('/users' , {method: 'POST', body: {
+		
+		
+		"name":"Lecture Hall A",
+		 "studentID": "20",
+		 "email": "1",
+		 "password":"123"
+
+
+		}})
+		.then(results => results).then(console.log)
+}
+
+function test() {
+	console.log("working")
+}
+
+function validate() {
+	var name = document.getElementById("name").value;
+	var studentID = document.getElementById("studid").value;
+	var email = document.getElementById("em").value;
+	var password = document.getElementById("pass").value;
+	if (name == '') {
+		alert('Please enter a valid name.');
+		return false;
+	} else if (studentID == '') {
+		alert('Please enter a valid studentID.');
+		return false;
+	} else if (email == '') {
+		alert('Please enter a valid email.');
+		return false;
+	}
+	else if (password == '') {
+		alert('Please enter a valid password.');
+		return false;
+	}
+	else {
+		return true;
+	}
+	
+	
+}
+
+</script>
 
 <title>Spring Boot</title>
 </head>
@@ -28,7 +79,7 @@ pageEncoding="ISO-8859-1"%>
           <td><input id="em" name="em"></td> 
            <tr></tr>
           <td>Enter Your password</td>
-          <td><input id="pass" name="pass"></td> 
+          <td><input type="password" id="pass" name="pass"></td> 
            <tr></tr>
           <td><input type="submit" value="Submit"></td>
         </tr>

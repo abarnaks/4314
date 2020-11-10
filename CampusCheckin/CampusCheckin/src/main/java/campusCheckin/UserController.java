@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 class UserController {
@@ -48,12 +49,15 @@ class UserController {
     }
 
     @PostMapping("/users")
-    public String newEmployee(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
+    public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
     	
     	User newUser = new User(name,studid,em,pass);
         EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
-
-        return "booking";
+        ModelAndView mav = new ModelAndView("booking");
+//        mav.addObject("name", name);
+//        mav.addObject("studid", studid);
+//        mav.addObject("em", em);
+        return mav;
 //        return ResponseEntity 
 //                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
 //                .body(entityModel);
