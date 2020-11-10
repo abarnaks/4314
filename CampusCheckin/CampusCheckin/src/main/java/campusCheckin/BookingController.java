@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class BookingController {
@@ -38,6 +39,12 @@ public class BookingController {
                 .collect(Collectors.toList());
 
         return CollectionModel.of(books, linkTo(methodOn(RoomController.class).all()).withSelfRel());
+    }
+    
+    @GetMapping("/ShowBookings")
+    public ModelAndView showBookings() {
+    	ModelAndView mav = new ModelAndView("booking");
+    	return mav;
     }
     
     @PostMapping("/bookings")

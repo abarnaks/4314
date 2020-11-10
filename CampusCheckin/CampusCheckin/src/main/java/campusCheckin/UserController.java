@@ -53,7 +53,7 @@ class UserController {
     	
     	User newUser = new User(name,studid,em,pass);
         EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
-        ModelAndView mav = new ModelAndView("booking");
+        ModelAndView mav = new ModelAndView("redirect:ShowBookings");
 //        mav.addObject("name", name);
 //        mav.addObject("studid", studid);
 //        mav.addObject("em", em);
@@ -77,7 +77,38 @@ class UserController {
 //                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
 //                .body(entityModel);
 //    }
-
+    
+    
+    @PostMapping("/login")
+    public ModelAndView loginUser(@RequestParam("name") String name, @RequestParam("pass") String pass,Model model) {
+    	
+    	
+        //EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
+    	ModelAndView mav;
+    	String userName = name;
+    	String userPass = pass;
+    	int check = 0;
+    	List<User> userList = repository.findAll();
+    	for (int i = 0; i < userList.size(); i++) {
+            if(userList.get(i).getName().equals(userName) && userList.get(i).getPassword().equals(userPass)) {
+            	check = 1;
+            }
+        }
+    	if(check == 1) {
+    		mav = new ModelAndView("redirect:ShowBookings");
+    	} else {
+    		mav = new ModelAndView("index");
+    	}
+        
+//        mav.addObject("name", name);
+//        mav.addObject("studid", studid);
+//        mav.addObject("em", em);
+        return mav;
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
+    }
+    
     // Single item
     @GetMapping("/users/{id}")
     EntityModel<User> one(@PathVariable Long id) {
