@@ -21,6 +21,9 @@ pageEncoding="ISO-8859-1"%>
         <tr>
           <td>Enter Your name</td>
           <td><input id="name" name="name"></td>
+          <td>Enter Your studentID</td>
+          <td><input id="studid" name="studid"></td>         
+          
           <td><input type="submit" value="Submit"></td>
         </tr>
       </table>

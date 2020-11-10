@@ -16,15 +16,16 @@ public class CampusCheckinController {
    }
 
    @PostMapping("/hello")
-   public String sayHello(@RequestParam("name") String name, Model model) {
+   public String sayHello(@RequestParam("name") String name, @RequestParam("studid") String studid, Model model) {
       model.addAttribute("name", name);
+      model.addAttribute("studid", studid);
       return "hello";
    }
    
    @RequestMapping("/login")
-   public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
-      model.addAttribute("username", username);
-      model.addAttribute("password", password);
+   public String login() {
+     // model.addAttribute("username", username);
+     // model.addAttribute("password", password);
       return "homelogin";
    }
    

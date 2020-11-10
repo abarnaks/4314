@@ -12,6 +12,7 @@
   <hr>
 
   <h2>Your name is ${name}</h2>
+  <h2>Your studid is ${studid}</h2>
 
 </body>
 </html>
