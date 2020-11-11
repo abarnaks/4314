@@ -13,10 +13,10 @@ h1{
 	color:#0000FF;
 }
 
-.form {
+.form-container {
 	background-color: #efefef;
 	width: 400px;
 	height: 50px;
-	border-radius: 7px;
+	border-radius: 10px;
 	padding: 20px;
 }
