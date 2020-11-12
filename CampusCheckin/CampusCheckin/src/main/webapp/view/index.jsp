@@ -76,13 +76,13 @@ function validate() {
 								    <form action="login" method="post" onsubmit="return validate()">
 								         
 										      <div class="form-group">
-											    <label for="name" >Username</label>
-											    <input name="name" id="name" aria-describedby="emailHelp" placeholder="Username">
+											    <label for="name">Username</label>
+											    <input class="form-control" name="name" id="name" aria-describedby="emailHelp" placeholder="Username">
 											  </div>
 											  
 											  <div class="form-group">
-											    <label for="pass">Password</label>
-											    <input name="pass" id="pass" type="password" aria-describedby="emailHelp" placeholder="Password">
+											    <label for="name">Password</label>
+											    <input class="form-control" name="pass" id="pass" type="password" aria-describedby="emailHelp" placeholder="Password">
 											  </div>
 											  
 											  <div class="form-group">

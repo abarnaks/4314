@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CampusCheckinController {
 
    
-   @RequestMapping("/")
+   @RequestMapping({"/", "/login"})
    public String index() {
       return "index";
    }
@@ -34,11 +34,19 @@ public class CampusCheckinController {
    }
    
    
-   @RequestMapping("/login")
-   public String login() {
-     // model.addAttribute("username", username);
-     // model.addAttribute("password", password);
-      return "homelogin";
+//   @RequestMapping("/login")
+//   public String login() {
+//     // model.addAttribute("username", username);
+//     // model.addAttribute("password", password);
+//      return "homelogin";
+//   }
+   
+   @RequestMapping("/welcome")
+   public String available() {
+      //model.addAttribute("name", name);
+	  // model.addAttribute("username", username);
+	  // model
+      return "welcome";
    }
    
    @RequestMapping("/booking")
