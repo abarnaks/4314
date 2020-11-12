@@ -30,7 +30,9 @@ class UserController {
 
     private final UserRepository repository;
     private UserModelAssembler assembler;
-    
+//    private final BuildingRepository b_repository;
+//    private BuildingModelAssembler b_assembler;
+//    
     UserController(UserRepository repository, UserModelAssembler assembler) {
         this.repository = repository;
         this.assembler = assembler;
@@ -53,11 +55,16 @@ class UserController {
     @PostMapping("/users")
     public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
     	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+    	
+    	//TODO: check that the user doesnt exist using student ID
+    	
     	User newUser = new User(name,studid,em,pass);
         EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
-        ModelAndView mav = new ModelAndView("redirect:welcome");
-        //log.info(name);
+        ModelAndView mav = new ModelAndView();
         mav.addObject("name", name);
+        mav.setViewName("welcome");
+        //log.info(name);
+        
 //        mav.addObject("name", name);
 //        mav.addObject("studid", studid);
 //        mav.addObject("em", em);
@@ -81,7 +88,7 @@ class UserController {
 //                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
 //                .body(entityModel);
 //    }
-    
+   
     
     @PostMapping("/login")
     public ModelAndView loginUser(@RequestParam("name") String name, @RequestParam("pass") String pass,Model model) {

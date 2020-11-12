@@ -10,16 +10,21 @@ import org.springframework.context.annotation.Configuration;
 class LoadDatabase {
 
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
-
+    
+    
     @Bean
     CommandLineRunner initDatabase(UserRepository userRepository, RoomRepository roomRepository, BuildingRepository buildingRepository, BookingRepository bookingRepository) {
-
+    	Building berg = new Building("Bergeron", "Campus walk", 200,5);
         return args -> {
+        	
 //            log.info("Preloading " + userRepository.save(new User("Bilbo", "Baggins", "burglar")));
 //            log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
-            
+        	log.info("Preloading " + buildingRepository.save(berg));
+        	log.info("Preloading " + buildingRepository.save(new Building("Lassonde", "Campus walk", 200,5)));
+        	log.info("Preloading " + buildingRepository.save(new Building("Scott Library", "Campus walk", 200,5)));
+        	log.info("Preloading " + buildingRepository.save(new Building("Steacie Library", "Campus walk", 200,5)));
             //userRepository.findAll().forEach(employee -> log.info("Preloaded " + employee));
-            log.info("Preloading " + roomRepository.save(new Room("room1", 10, 12345678910L)));
+            log.info("Preloading " + roomRepository.save(new Room("Sandbox", 10, berg.getId())));
             //log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
             
           //  log.info("testing" + roomRepository.findAll());

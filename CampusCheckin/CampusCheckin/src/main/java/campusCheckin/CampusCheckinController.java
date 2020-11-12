@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CampusCheckinController {
-
+	
+	CampusCheckinController() {
+		
+	}
    
    @RequestMapping({"/", "/login"})
    public String index() {
