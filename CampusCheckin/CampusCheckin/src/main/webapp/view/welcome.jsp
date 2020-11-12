@@ -15,13 +15,18 @@
 <link rel="stylesheeet" type="text/css"
 	href="resources/static/css/main.css">
 
-	<!-- Static content -->
+<!-- Static content -->
+<style>
+.hide {
+	display: none;
+}
+</style>
 </head>
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Campus Checkin</a>
-		 <span class="navbar-text">Welcome to campus checkin, ${name}! (Get this name from the database)</span>
+		<a class="navbar-brand" href="#">Campus Checkin</a> <span
+			class="navbar-text">Welcome to campus checkin, ${name}!</span>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo02"
 			aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -31,14 +36,25 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<<<<<<< HEAD
 				<li class="nav-item active"><a class="nav-link" href="/welcome">Home
 						<span class="sr-only">(current)</span>
+=======
+				<li class="nav-item active"><a class="nav-link" href="/">Home
+						page <span class="sr-only">(current)</span>
+>>>>>>> branch 'frontend-configured' of https://github.com/abarnaks/4314.git
 				</a></li>
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="/booking">Book now</a></li>		
 				<li class="nav-item"><a class="nav-link" href="/">View booking</a></li>	
 				<li class="nav-item">
 		         <a class="nav-link" href="/login">Logout</a>
 		        </li>
+=======
+				<li class="nav-item"><a class="nav-link" href="/">Book now</a></li>
+				<li class="nav-item"><a class="nav-link" href="/">View
+						booking</a></li>
+>>>>>>> branch 'frontend-configured' of https://github.com/abarnaks/4314.git
 			</ul>
 
 		</div>
@@ -59,6 +75,7 @@
 								</h5>
 							</div>
 
+<<<<<<< HEAD
 							<div id="collapseOne" class="collapse show"
 								aria-labelledby="headingOne" data-parent="#accordion">
 								<div class="card-body">
@@ -76,9 +93,25 @@
 									  	Steacie Library <span class="badge badge-primary badge-pill">25 people</span>
 									  </a>
 					
+=======
+							<form action="booking" method="post" onsubmit="return validate()">
+								<div id="collapseOne" class="collapse show"
+									aria-labelledby="headingOne" data-parent="#accordion">
+									<div class="card-body">
+										<div class="list-group">
+											<button type="button" class="hide"></button>
+											<button type class="list-group-item list-group-item-action">Lassonde</button>
+											<button type class="list-group-item list-group-item-action">Bergeron</button>
+											<button type class="list-group-item list-group-item-action">Scott
+												Library</button>
+											<button type class="list-group-item list-group-item-action">Steacie
+												Library</button>
+										</div>
+>>>>>>> branch 'frontend-configured' of https://github.com/abarnaks/4314.git
 									</div>
 								</div>
-							</div>
+								<!-- 	<input type="button"></input> -->
+							</form>
 						</div>
 						<div class="card">
 							<div class="card-header" id="headingTwo">
@@ -90,7 +123,12 @@
 							</div>
 							<div id="collapseTwo" class="collapse"
 								aria-labelledby="headingTwo" data-parent="#accordion">
-								<div class="card-body"> To find out more information about York University's response to Covid-19 <a href="https://yubettertogether.info.yorku.ca/important-links-resources/">Click here!</a></div>
+								<div class="card-body">
+									To find out more information about York University's response
+									to Covid-19 <a
+										href="https://yubettertogether.info.yorku.ca/important-links-resources/">Click
+										here!</a>
+								</div>
 							</div>
 						</div>
 						<div class="card">
@@ -103,7 +141,8 @@
 							</div>
 							<div id="collapseThree" class="collapse"
 								aria-labelledby="headingThree" data-parent="#accordion">
-								<div class="card-body">You have no current bookings at this time!</div>
+								<div class="card-body">You have no current bookings at
+									this time!</div>
 							</div>
 						</div>
 					</div>
