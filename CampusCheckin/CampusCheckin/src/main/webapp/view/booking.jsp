@@ -26,11 +26,14 @@
 	
 	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	      <li class="nav-item">
-	        <a class="nav-link" href="/signup">Create account</a>
-	      </li>
+	      <li class="nav-item"><a class="nav-link" href="/welcome">Home</a></li>		      
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/">Login <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/booking">Book now <span class="sr-only">(current)</span></a></li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/">View booking</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/login">Logout</a>
 	      </li>
 	    </ul>
 	   
@@ -47,7 +50,7 @@
 								 <div class="form-group">
 								    <label for="exampleFormControlSelect1">Building name</label>
 								    <select class="form-control" id="exampleFormControlSelect1">
-								      <option>building name 1</option>
+								      <option>building name 1 (Get from database)</option>
 								      <option>building name 2</option> 
 								    </select>
 								  </div>
@@ -55,7 +58,7 @@
 								  <div class="form-group">
 								    <label for="exampleFormControlSelect1">Room name</label>
 								    <select class="form-control" id="exampleFormControlSelect1">
-								      <option>room name 1</option>
+								      <option>room name 1 (Get from database)</option>
 								      <option>room name 2</option> 
 								    </select>
 								  </div>
@@ -69,9 +72,7 @@
 								  	 <label>Select date</label>
 						             <input type="date" id="date" name="date" aria-describedby="emailHelp" class="form-control" >
 								  </div>
-								
-						  
-								  
+			  
 								  <div class="form-group">
 								    <input type="submit" value="availability">
 							      </div>

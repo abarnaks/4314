@@ -31,11 +31,14 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="/">Home page
+				<li class="nav-item active"><a class="nav-link" href="/welcome">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/">Book now</a></li>		
+				<li class="nav-item"><a class="nav-link" href="/booking">Book now</a></li>		
 				<li class="nav-item"><a class="nav-link" href="/">View booking</a></li>	
+				<li class="nav-item">
+		         <a class="nav-link" href="/login">Logout</a>
+		        </li>
 			</ul>
 
 		</div>
@@ -60,12 +63,18 @@
 								aria-labelledby="headingOne" data-parent="#accordion">
 								<div class="card-body">
 									<div class="list-group">
-									  <a href="#" class="list-group-item list-group-item-action">
-									    Lassonde
+									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									    Lassonde <span class="badge badge-primary badge-pill">155</span>
 									  </a>
-									  <a href="#" class="list-group-item list-group-item-action">Bergeron</a>
-									  <a href="#" class="list-group-item list-group-item-action">Scott Library</a>
-									  <a href="#" class="list-group-item list-group-item-action">Steacie Library</a>
+									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  	Bergeron <span class="badge badge-primary badge-pill">50</span>
+									  </a>
+									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  	Scott Library <span class="badge badge-primary badge-pill">200</span>
+									  </a>
+									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  	Steacie Library <span class="badge badge-primary badge-pill">25 people</span>
+									  </a>
 					
 									</div>
 								</div>
