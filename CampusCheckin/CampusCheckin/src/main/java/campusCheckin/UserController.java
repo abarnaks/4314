@@ -6,6 +6,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -50,10 +52,12 @@ class UserController {
 
     @PostMapping("/users")
     public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
-    	
+    	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
     	User newUser = new User(name,studid,em,pass);
         EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
-        ModelAndView mav = new ModelAndView("redirect:ShowBookings");
+        ModelAndView mav = new ModelAndView("redirect:welcome");
+        //log.info(name);
+        mav.addObject("name", name);
 //        mav.addObject("name", name);
 //        mav.addObject("studid", studid);
 //        mav.addObject("em", em);
@@ -95,7 +99,8 @@ class UserController {
             }
         }
     	if(check == 1) {
-    		mav = new ModelAndView("redirect:ShowBookings");
+    		mav = new ModelAndView("redirect:welcome");
+    		mav.addObject(name, userName);
     	} else {
     		mav = new ModelAndView("index");
     	}

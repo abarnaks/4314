@@ -21,7 +21,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Campus Checkin</a>
-		 <span class="navbar-text">Welcome to campus checkin, Elijah! (Get this name from the database)</span>
+		 <span class="navbar-text">Welcome to campus checkin, ${name}! (Get this name from the database)</span>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo02"
 			aria-controls="navbarTogglerDemo02" aria-expanded="false"
