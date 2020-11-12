@@ -53,12 +53,12 @@ class UserController {
     }
 
     @PostMapping("/users")
-    public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
+    public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass, @RequestParam("confirm-pass") String cpass, Model model) {
     	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
     	
     	//TODO: check that the user doesnt exist using student ID
     	
-    	User newUser = new User(name,studid,em,pass);
+    	User newUser = new User(name,studid,em,pass,cpass);
         EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
         ModelAndView mav = new ModelAndView();
         mav.addObject("name", name);
@@ -74,8 +74,8 @@ class UserController {
 //                .body(entityModel);
     }
    
-    public void addUser(String name, String studid, String em ,String pass) {
-    	User newUser = new User(name,studid,em,pass);
+    public void addUser(String name, String studid, String em ,String pass, String cpass) {
+    	User newUser = new User(name,studid,em,pass, cpass);
         EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
     }
     

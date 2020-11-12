@@ -15,16 +15,18 @@ class User {
     private String studentID;
     private String email;
     private String password; //this needs to change in future with protection
+    private String cpassword;
 
     User() {
     }
 
-    User(String name, String studentID, String email, String password) {
+    User(String name, String studentID, String email, String password, String cpassword) {
 
         this.name = name;
         this.studentID = studentID;
         this.email = email;
         this.password = password;
+        this.cpassword = cpassword;
     }
 
     
@@ -66,6 +68,14 @@ class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getCPassword() {
+        return this.cpassword;
+    }
+
+    public void setCPassword(String cpassword) {
+        this.cpassword = cpassword;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -76,12 +86,12 @@ class User {
             return false;
         User user = (User) o;
         return Objects.equals(this.id, user.id) && Objects.equals(this.name, user.name) && Objects.equals(this.studentID, user.studentID)
-                && Objects.equals(this.email, user.email)  && Objects.equals(this.password, user.password);
+                && Objects.equals(this.email, user.email)  && Objects.equals(this.password, user.password) && Objects.equals(this.cpassword, user.cpassword);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.name, this.studentID, this.email, this.password);
+        return Objects.hash(this.id, this.name, this.studentID, this.email, this.password, this.cpassword);
     }
     
     //Not gonna output password

@@ -43,6 +43,8 @@ function validate() {
 	var studentID = document.getElementById("studid").value;
 	var email = document.getElementById("em").value;
 	var password = document.getElementById("pass").value;
+	var cpassword = document.getElementById("confirm-pass").value;
+
 	if (name == '') {
 		alert('Please enter a valid name.');
 		return false;
@@ -55,6 +57,14 @@ function validate() {
 	}
 	else if (password == '') {
 		alert('Please enter a valid password.');
+		return false;
+	}
+	else if (cpassword == '') {
+		alert('Please enter a valid password.');
+		return false;
+	}
+	else if (cpassword != password) {
+		alert('Passwords do not match');
 		return false;
 	}
 	else {
