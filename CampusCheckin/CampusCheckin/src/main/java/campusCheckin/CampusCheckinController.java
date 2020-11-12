@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CampusCheckinController {
 	
+	//TODO: LINK ALL REPOS AND ASSEMBLERS TO THIS FILE
+	
 	CampusCheckinController() {
 		
 	}

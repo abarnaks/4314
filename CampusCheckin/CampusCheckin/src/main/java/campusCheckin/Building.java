@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+//If you add a new param make sure to add a get/set add to constructor and updates equals, hashcode and to string
+
 @Entity
 public class Building {
 
@@ -14,17 +16,18 @@ public class Building {
     private String location;
     private int max_capacity;
     private int max_rooms;
-    
+   
     Building(){
     	
     }
     
-    Building(String buildingName, String location, int max_capacity, int max_rooms) {
+    Building(String buildingName, String location, int max_capacity, int max_rooms ) {
 
         this.buildingName = buildingName;
         this.location = location;
         this.max_capacity = max_capacity;
         this.max_rooms = max_rooms;
+        
     }
     
     public Long getId() {
