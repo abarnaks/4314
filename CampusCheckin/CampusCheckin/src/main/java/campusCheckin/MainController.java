@@ -205,8 +205,9 @@ public class MainController {
     	} else {
     		//Handle wrong log in
     		RedirectView rv = new RedirectView();
-            rv.setUrl("index");
+            rv.setUrl("/login");
             mav = new ModelAndView(rv);
+            mav.addObject("error_msg", "Invalid login, username and password don't match");
     		//mav.addObject("params", params);
     	}
         

@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CampusCheckinController {
 
    
-//   @RequestMapping({"/", "/login"})
-//   public String index(@RequestParam(name="error_msg", required=false) String error_msg, Model model) {
-//	  model.addAttribute("error_msg", error_msg);
-//      return "index";
-//   }
-	
    @RequestMapping({"/", "/login"})
-   public String index() {
-	 
-     return "index";
-  }
+   public String index(@RequestParam(name="error_msg", required=false) String error_msg, Model model) {
+	  model.addAttribute("error_msg", error_msg);
+      return "index";
+   }
+	
+//   @RequestMapping({"/", "/login"})
+//   public String index() {
+//	 
+//     return "index";
+//  }
 //	
    @PostMapping("/hello")
    public String sayHello(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, Model model) {
