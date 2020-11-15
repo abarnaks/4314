@@ -57,13 +57,13 @@ public class BookingController {
                 .body(entityModel);
     }
 
-    // Single item
-    @GetMapping("/booking/{id}")
-    EntityModel<Booking> one(@PathVariable Long id) {
-
-        Booking book = repository.findById(id) //
-                .orElseThrow(() -> new NotFoundException("booking",id));
-
-        return assembler.toModel(book);
-    }
+//    // Single item
+//    @GetMapping("/booking/{id}")
+//    EntityModel<Booking> one(@PathVariable Long id) {
+//
+//        Booking book = repository.findById(id) //
+//                .orElseThrow(() -> new NotFoundException("booking",id));
+//
+//        return assembler.toModel(book);
+//    }
 }

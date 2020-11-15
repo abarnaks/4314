@@ -89,24 +89,30 @@ public class MainController {
     	
     	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
     	mav.addObject("params", params);
-//    	mav.addObject("building1", build1);
-//    	mav.addObject("building2", build2);
-//    	mav.addObject("building3", build3);
-//    	mav.addObject("building4", build4);
-//    	mav.addObject("building1_cap", build1Cap);
-//    	mav.addObject("building2_cap", build2Cap);
-//    	mav.addObject("building3_cap", build3Cap);
-//    	mav.addObject("building4_cap", build4Cap);
-    	//mav.setViewName("welcome");
-//        mav.addObject("name", name);
-//        mav.addObject("studid", studid);
-//        mav.addObject("em", em);
         return mav;
 //        return ResponseEntity 
 //                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
 //                .body(entityModel);
     }
-   
+    
+    @PostMapping("/rooms/{buildingName}")
+    public ModelAndView goToBuilding(@PathVariable String buildingName ) {
+    	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+    	
+        
+        List<Building> buildList = b_repository.findAll();
+        
+        RedirectView rv = new RedirectView();
+        rv.setUrl("rooms/{BuildingName}");
+        ModelAndView mav = new ModelAndView(rv);
+        mav.addObject("buildingName", buildingName);
+    	
+        return mav;
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
+    }
+    
     public void addUser(String name, String studid, String em ,String pass) {
     	User newUser = new User(name,studid,em,pass);
         EntityModel<User> entityModel = u_assembler.toModel(u_repository.save(newUser));
@@ -177,31 +183,31 @@ public class MainController {
         }
     	
     	List<Building> buildList = b_repository.findAll();
+    	
+        //log.info(name);
+        //mav.addObject("name", name);
     	String build1 = buildList.get(0).getBuildingName();
     	String build2 = buildList.get(1).getBuildingName();
     	String build3 = buildList.get(2).getBuildingName();
     	String build4 = buildList.get(3).getBuildingName();
-    	int build1Cap = buildList.get(0).getMax_capacity();
-    	int build2Cap = buildList.get(1).getMax_capacity();
-    	int build3Cap = buildList.get(2).getMax_capacity();
-    	int build4Cap = buildList.get(3).getMax_capacity();
+    	String build1Cap = Integer.toString(buildList.get(0).getMax_capacity());  
+    	String build2Cap = Integer.toString(buildList.get(1).getMax_capacity());  
+    	String build3Cap = Integer.toString(buildList.get(2).getMax_capacity());  
+    	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  
+    	
+    	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
+    	
     	if(check == 1) {
-    		mav = new ModelAndView("redirect:welcome");
-    		mav.addObject("name", userName); //building1
-    		mav.addObject("building1", build1);
-    		mav.addObject("building2", build2);
-    		mav.addObject("building3", build3);
-    		mav.addObject("building4", build4);
-    		mav.addObject("building1", build1);
-        	mav.addObject("building2", build2);
-        	mav.addObject("building3", build3);
-        	mav.addObject("building4", build4);
-        	mav.addObject("building1_cap", build1Cap);
-        	mav.addObject("building2_cap", build2Cap);
-        	mav.addObject("building3_cap", build3Cap);
-        	mav.addObject("building4_cap", build4Cap);
+    		RedirectView rv = new RedirectView();
+            rv.setUrl("welcome");
+            mav = new ModelAndView(rv);
+    		mav.addObject("params", params);
     	} else {
-    		mav = new ModelAndView("index");
+    		//Handle wrong log in
+    		RedirectView rv = new RedirectView();
+            rv.setUrl("index");
+            mav = new ModelAndView(rv);
+    		//mav.addObject("params", params);
     	}
         
 //        mav.addObject("name", name);

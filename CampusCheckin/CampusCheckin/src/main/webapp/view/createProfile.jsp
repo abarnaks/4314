@@ -43,6 +43,8 @@ function validate() {
 	var studentID = document.getElementById("studid").value;
 	var email = document.getElementById("em").value;
 	var password = document.getElementById("pass").value;
+	var cformP = document.getElementById("cformP").value;
+	
 	if (name == '') {
 		alert('Please enter a valid name.');
 		return false;
@@ -55,6 +57,10 @@ function validate() {
 	}
 	else if (password == '') {
 		alert('Please enter a valid password.');
+		return false;
+	}
+	else if (password != cformP) { 
+		alert('Passwords do not match');
 		return false;
 	}
 	else {
@@ -121,7 +127,7 @@ function validate() {
 								  
 								   <div class="form-group">
 								    <label>Confirm Password</label>
-								    <input class="form-control" name="confirm-pass" id="confirm-pass" type="password" aria-describedby="emailHelp" placeholder="Confirm Password">
+								    <input class="form-control" name="confirm-pass" id="cformP" type="password" aria-describedby="emailHelp" placeholder="Confirm Password">
 								  </div>
 								  
 								  <div class="form-group">

@@ -4,6 +4,7 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,11 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CampusCheckinController {
 
    
+//   @RequestMapping({"/", "/login"})
+//   public String index(@RequestParam(name="error_msg", required=false) String error_msg, Model model) {
+//	  model.addAttribute("error_msg", error_msg);
+//      return "index";
+//   }
+	
    @RequestMapping({"/", "/login"})
    public String index() {
-      return "index";
-   }
-
+	 
+     return "index";
+  }
+//	
    @PostMapping("/hello")
    public String sayHello(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, Model model) {
       model.addAttribute("name", name);
@@ -31,6 +39,13 @@ public class CampusCheckinController {
      // model.addAttribute("username", username);
      // model.addAttribute("password", password);
       return "createProfile";
+   }
+   
+   @RequestMapping("/booking")
+   public String bookingPage() {
+     // model.addAttribute("username", username);
+     // model.addAttribute("password", password);
+      return "booking";
    }
    
    
@@ -75,12 +90,12 @@ public class CampusCheckinController {
       return "welcome";
    }
    
-   @RequestMapping("/booking")
-   public String book() {
+   @RequestMapping("/rooms/{buildingName}")
+   public String book(Model model, @PathVariable String buildingName) {
       //model.addAttribute("name", name);
-	  // model.addAttribute("username", username);
+	  model.addAttribute("buildingName", buildingName);
 	  // model
-      return "booking";
+      return "rooms";
    }
    
    @RequestMapping("/confirmation")

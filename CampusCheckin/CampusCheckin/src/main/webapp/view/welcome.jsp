@@ -21,7 +21,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Campus Checkin</a>
-		 <span class="navbar-text">Welcome to campus checkin, ${name}! (Get this name from the database)</span>
+		 <span class="navbar-text">Welcome to campus checkin, ${name}!</span>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo02"
 			aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -63,16 +63,16 @@
 								aria-labelledby="headingOne" data-parent="#accordion">
 								<div class="card-body">
 									<div class="list-group">
-									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									    ${building1} <span class="badge badge-primary badge-pill">${building1_cap}</span>
+									  <a href="/rooms/${building1}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									    ${building1} <span class="badge badge-primary badge-pill">50 / ${building1_cap}</span>
 									  </a>
-									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  <a href="/rooms/${building2}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 									  	 ${building2} <span class="badge badge-primary badge-pill">${building2_cap}</span>
 									  </a>
-									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  <a href="/rooms/${building3}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 									  	 ${building3} <span class="badge badge-primary badge-pill">${building3_cap}</span>
 									  </a>
-									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  <a href="/rooms/${building4}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 									  	 ${building4} <span class="badge badge-primary badge-pill">${building4_cap}</span>
 									  </a>
 					
@@ -103,7 +103,18 @@
 							</div>
 							<div id="collapseThree" class="collapse"
 								aria-labelledby="headingThree" data-parent="#accordion">
-								<div class="card-body">You have no current bookings at this time!</div>
+								<div class="card-body">
+									<a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									     Booking 1 <span class="badge badge-primary badge-pill"></span>
+									  </a>
+									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  	 Booking 2 <span class="badge badge-primary badge-pill"></span>
+									  </a>
+									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									  	 Booking 3 <span class="badge badge-primary badge-pill"></span>
+									  </a>
+			
+								</div>
 							</div>
 						</div>
 					</div>

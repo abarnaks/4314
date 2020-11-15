@@ -90,6 +90,8 @@ function validate() {
 										      </div>
 								      
 									    	  <p>Don't have an account? <a href="/signup">Sign up!</a></p>
+									    	  
+									    	  <p>${error_msg}</p>
 									   
 									   </form>
 									   

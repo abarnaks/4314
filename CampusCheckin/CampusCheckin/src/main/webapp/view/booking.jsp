@@ -48,7 +48,9 @@
 						
 							<form>
 								 <div class="form-group">
-								    <label for="exampleFormControlSelect1">Building name</label>
+								    <label for="exampleFormControlSelect1">${buildingName}</label>
+								    
+								    
 								    <select class="form-control" id="exampleFormControlSelect1">
 								      <option>building name 1 (Get from database)</option>
 								      <option>building name 2</option> 
