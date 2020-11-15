@@ -195,7 +195,7 @@ public class MainController {
     	String build3Cap = Integer.toString(buildList.get(2).getMax_capacity());  
     	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  
     	
-    	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
+    	String[] params = {userName, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
     	
     	if(check == 1) {
     		RedirectView rv = new RedirectView();
