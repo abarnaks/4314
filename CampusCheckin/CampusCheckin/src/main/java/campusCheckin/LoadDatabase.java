@@ -13,13 +13,27 @@ class LoadDatabase {
 
     @Bean
     CommandLineRunner initDatabase(UserRepository userRepository, RoomRepository roomRepository, BuildingRepository buildingRepository, BookingRepository bookingRepository) {
-
+    	Building lassonde = new Building("Lassonde", "Campus Walk", 200, 7);
+    	Building bergeron = new Building("Bergeron", "Campus Walk", 250, 15); 
+    	Building scottLib = new Building("Scott Library", "Campus Walk", 500, 27); 
+    	Building steacieLib = new Building("Steacie Library", "Campus Walk", 350, 10); 
+    	Room lectureHallC = new Room("Lecture Hall C", 20, lassonde.getId() );
+    	Room sandbox = new Room("Sandbox" , 10 ,bergeron.getId() );
+    	Room studyRoomA = new Room("Study Room A", 5 , scottLib.getId());
+    	Room studyRoomB_SC = new Room("Study Room B", 5 , steacieLib.getId());
         return args -> {
 //            log.info("Preloading " + userRepository.save(new User("Bilbo", "Baggins", "burglar")));
 //            log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
             
             //userRepository.findAll().forEach(employee -> log.info("Preloaded " + employee));
-            log.info("Preloading " + roomRepository.save(new Room("room1", 10, 12345678910L)));
+        	log.info("Preloading " + buildingRepository.save(lassonde));
+        	log.info("Preloading " + buildingRepository.save(bergeron));
+        	log.info("Preloading " + buildingRepository.save(scottLib));
+        	log.info("Preloading " + buildingRepository.save(steacieLib));
+            log.info("Preloading " + roomRepository.save(lectureHallC));
+            log.info("Preloading " + roomRepository.save(sandbox));
+            log.info("Preloading " + roomRepository.save(studyRoomA));
+            log.info("Preloading " + roomRepository.save(studyRoomB_SC));
             //log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
             
           //  log.info("testing" + roomRepository.findAll());

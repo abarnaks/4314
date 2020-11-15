@@ -14,7 +14,7 @@ class BuildingModelAssembler implements RepresentationModelAssembler<Building, E
 		//return EntityModel.of(room, linkTo(methodOn(RoomController.class).all()).withRel("rooms"));
 
         return EntityModel.of(Build, //
-                linkTo(methodOn(BuildingController.class).one(Build.getId())).withSelfRel(), linkTo(methodOn(BuildingController.class).all()).withRel("buildings"));
+                linkTo(methodOn(MainController.class).one(Build.getId())).withSelfRel(), linkTo(methodOn(MainController.class).all()).withRel("buildings"));
     	
     }
 }
