@@ -64,16 +64,16 @@
 								<div class="card-body">
 									<div class="list-group">
 									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									    ${building1} <span class="badge badge-primary badge-pill">155</span>
+									    ${building1} <span class="badge badge-primary badge-pill">${building1_cap}</span>
 									  </a>
 									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									  	 ${building2} <span class="badge badge-primary badge-pill">50</span>
+									  	 ${building2} <span class="badge badge-primary badge-pill">${building2_cap}</span>
 									  </a>
 									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									  	 ${building3} <span class="badge badge-primary badge-pill">200</span>
+									  	 ${building3} <span class="badge badge-primary badge-pill">${building3_cap}</span>
 									  </a>
 									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									  	 ${building4} <span class="badge badge-primary badge-pill">25 people</span>
+									  	 ${building4} <span class="badge badge-primary badge-pill">${building4_cap}</span>
 									  </a>
 					
 									</div>

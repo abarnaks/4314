@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 public class MainController {
@@ -69,20 +70,34 @@ public class MainController {
     	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
     	User newUser = new User(name,studid,em,pass);
         EntityModel<User> entityModel = u_assembler.toModel(u_repository.save(newUser));
-        ModelAndView mav = new ModelAndView();
-        //log.info(name);
-        mav.addObject("name", name);
+        
         List<Building> buildList = b_repository.findAll();
+        
+        RedirectView rv = new RedirectView();
+        rv.setUrl("welcome");
+        ModelAndView mav = new ModelAndView(rv);
+        //log.info(name);
+        //mav.addObject("name", name);
     	String build1 = buildList.get(0).getBuildingName();
     	String build2 = buildList.get(1).getBuildingName();
     	String build3 = buildList.get(2).getBuildingName();
     	String build4 = buildList.get(3).getBuildingName();
+    	String build1Cap = Integer.toString(buildList.get(0).getMax_capacity());  
+    	String build2Cap = Integer.toString(buildList.get(1).getMax_capacity());  
+    	String build3Cap = Integer.toString(buildList.get(2).getMax_capacity());  
+    	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  
     	
-    	mav.addObject("building1", build1);
-    	mav.addObject("building2", build2);
-    	mav.addObject("building3", build3);
-    	mav.addObject("building4", build4);
-    	mav.setViewName("welcome");
+    	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
+    	mav.addObject("params", params);
+//    	mav.addObject("building1", build1);
+//    	mav.addObject("building2", build2);
+//    	mav.addObject("building3", build3);
+//    	mav.addObject("building4", build4);
+//    	mav.addObject("building1_cap", build1Cap);
+//    	mav.addObject("building2_cap", build2Cap);
+//    	mav.addObject("building3_cap", build3Cap);
+//    	mav.addObject("building4_cap", build4Cap);
+    	//mav.setViewName("welcome");
 //        mav.addObject("name", name);
 //        mav.addObject("studid", studid);
 //        mav.addObject("em", em);
@@ -108,6 +123,43 @@ public class MainController {
 //    }
     
     
+//    @PostMapping("/users")
+//    public RedirectView  newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
+//  	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+//    	User newUser = new User(name,studid,em,pass);
+//        EntityModel<User> entityModel = u_assembler.toModel(u_repository.save(newUser));
+//        model.addAttribute("name", name);
+//        RedirectView rv = new RedirectView();
+//        rv.setUrl("welcome");
+//		return rv;
+//    
+//    }
+//    @PostMapping("/welcome")
+//    public ModelAndView handleRequest (@RequestParam String name, Model model) {
+//        model.addAttribute("name", name);
+//        ModelAndView mav = new ModelAndView();
+//        List<Building> buildList = b_repository.findAll();
+//    	String build1 = buildList.get(0).getBuildingName();
+//    	String build2 = buildList.get(1).getBuildingName();
+//    	String build3 = buildList.get(2).getBuildingName();
+//    	String build4 = buildList.get(3).getBuildingName();
+//    	int build1Cap = buildList.get(0).getMax_capacity();
+//    	int build2Cap = buildList.get(1).getMax_capacity();
+//    	int build3Cap = buildList.get(2).getMax_capacity();
+//    	int build4Cap = buildList.get(3).getMax_capacity();
+//    	
+//    	mav.addObject("building1", build1);
+//    	mav.addObject("building2", build2);
+//    	mav.addObject("building3", build3);
+//    	mav.addObject("building4", build4);
+//    	mav.addObject("building1_cap", build1Cap);
+//    	mav.addObject("building2_cap", build2Cap);
+//    	mav.addObject("building3_cap", build3Cap);
+//    	mav.addObject("building4_cap", build4Cap);
+//    	mav.setViewName("welcome");
+//        return mav;
+//    }
+    
     @PostMapping("/login")
     public ModelAndView loginUser(@RequestParam("name") String name, @RequestParam("pass") String pass,Model model) {
     	
@@ -129,6 +181,10 @@ public class MainController {
     	String build2 = buildList.get(1).getBuildingName();
     	String build3 = buildList.get(2).getBuildingName();
     	String build4 = buildList.get(3).getBuildingName();
+    	int build1Cap = buildList.get(0).getMax_capacity();
+    	int build2Cap = buildList.get(1).getMax_capacity();
+    	int build3Cap = buildList.get(2).getMax_capacity();
+    	int build4Cap = buildList.get(3).getMax_capacity();
     	if(check == 1) {
     		mav = new ModelAndView("redirect:welcome");
     		mav.addObject("name", userName); //building1
@@ -136,6 +192,14 @@ public class MainController {
     		mav.addObject("building2", build2);
     		mav.addObject("building3", build3);
     		mav.addObject("building4", build4);
+    		mav.addObject("building1", build1);
+        	mav.addObject("building2", build2);
+        	mav.addObject("building3", build3);
+        	mav.addObject("building4", build4);
+        	mav.addObject("building1_cap", build1Cap);
+        	mav.addObject("building2_cap", build2Cap);
+        	mav.addObject("building3_cap", build3Cap);
+        	mav.addObject("building4_cap", build4Cap);
     	} else {
     		mav = new ModelAndView("index");
     	}
