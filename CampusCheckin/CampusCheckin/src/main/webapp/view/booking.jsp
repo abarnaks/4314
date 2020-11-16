@@ -46,22 +46,29 @@
 					<section class="row justify-content-center">
 						<section class="col-12 col-sm-6 col-md-6">		
 						
-							<form>
+							<form action="/confirmbooking/${roomName}" method="post"  onsubmit="return validate()">
 								 <div class="form-group">
-								    <label for="exampleFormControlSelect1"><h4>Building: ${buildingName}</h4></label> 
+								    <label for="exampleFormControlSelect1"><h4 >Building: ${buildingName}</h4></label> 
 								  </div>
 								  
 								  <div class="form-group">
-								    <label><h4>Room: </h4></label>								   
+								    <label><h4 >Room: ${roomName}</h4></label>								   
 								  </div>
 								  
 								  <div class="form-group">
-								  	<label><h4>Date and Time: </h4></label>
+								  	<label><h4 >Date and Time: ${time_slot}</h4></label>
 								  </div>
 								  
 								  <div class="form-group">
-								    <label><h4>Study Group Size: </h4></label>
+								  	<label><h4 >Current Capacity: ${currentCap}/${max_cap}</h4></label>
 								  </div>
+								  
+								  <div class="form-group">
+										<label><h4>Study size</h4></label> <input type="number"
+											class="form-control" name="study_size" id="size"
+											aria-describedby="emailHelp"
+											placeholder="size of your study group">
+								  </div> 
 	
 								  <div class="form-group">
 								    <input type="submit" value="Confirm">

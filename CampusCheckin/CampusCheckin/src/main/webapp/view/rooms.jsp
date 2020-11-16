@@ -18,6 +18,21 @@
 	}
 </Script>
 <meta charset="ISO-8859-1">
+<script>
+function validate() {
+	var datefield = document.getElementById("date").value;
+
+	if (datefield == '') {
+		alert('Please enter a date.');
+		return false;
+	} 
+	
+	
+}
+
+</script>
+
+
 <title>View Rooms and Availability</title>
 </head>
 <body>
@@ -50,7 +65,7 @@
 					<section class="row justify-content-center">
 						<section class="col-12 col-sm-6 col-md-6">		
 						
-							<form>
+							<form action="/getroom/${buildingName}" method="post"  onsubmit="return validate()">
 								 <div class="form-group">
 								    <label for="exampleFormControlSelect1"><h4>Building: ${buildingName}</h4></label>
 								    <div class="form-group">
@@ -62,7 +77,7 @@
 						            
 						           <div class="form-group">
 						             <label for="cars">Select Hour</label>
-						             <select class="form-control" name="hours" id="cars">
+						             <select class="form-control" name="time_slot" id="time_slot">
 						             	<option value="time_8">8:00am - 9:00am</option>
 									    <option value="time_9">9:00am - 10:00am</option>
 									    <option value="time_10">10:00am -11:00am</option>
@@ -79,12 +94,7 @@
 									 </select>
 						            </div>
 						             
-						          <div class="form-group">
-										<label>Study size</label> <input type="number"
-											class="form-control" name="size" id="size"
-											aria-describedby="emailHelp"
-											placeholder="size of your study group">
-								  </div>   
+						            
 						          
 						          <div class="form-group">
 								    <input type="submit" value="Availability">
@@ -107,7 +117,7 @@
 											aria-labelledby="headingOne" data-parent="#accordion">
 											<div class="card-body">
 												<div class="list-group">
-												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+												  <a href="/prebookroom/${Room1}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 												     ${Room1} <span class="badge badge-primary badge-pill">${CurrentCap1} / ${Room1cap}</span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">

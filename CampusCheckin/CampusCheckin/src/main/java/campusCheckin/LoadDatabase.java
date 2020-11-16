@@ -40,7 +40,7 @@ class LoadDatabase {
             log.info("Preloading " + userRepository.save(admin));
             List<Room> roomList = roomRepository.findAll();
             
-            log.info("Preloading " + bookingRepository.save(new Booking(admin.getId(), roomList.get(0).getId(), "Nov 15 20", 5)));
+            log.info("Preloading " + bookingRepository.save(new Booking(admin.getId(), roomList.get(0).getId(), "Nov 15 22", 5)));
             //log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
             
           //  log.info("testing" + roomRepository.findAll());

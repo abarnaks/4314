@@ -43,11 +43,14 @@ public class CampusCheckinController {
       return "createProfile";
    }
    
-   @RequestMapping("/booking")
-   public String bookingPage() {
-     // model.addAttribute("username", username);
-     // model.addAttribute("password", password);
-      return "booking";
+   @RequestMapping("/booking/{roomName}")
+   public String bookingPage(Model model, String[] params) {
+     model.addAttribute("buildingName", params[1]);
+     model.addAttribute("roomName", params[0]);
+     model.addAttribute("time_slot", params[2]);
+     model.addAttribute("currentCap", params[3]);
+     model.addAttribute("max_cap", params[4]);
+     return "booking";
    }
    
    
@@ -116,8 +119,11 @@ public class CampusCheckinController {
    }
    
    @RequestMapping("/confirmation")
-   public String confirmation() {
-      //model.addAttribute("name", name);
+   public String confirmation(Model model, String[] params) {
+      model.addAttribute("roomName", params[0]);
+      model.addAttribute("buildingName", params[1]);
+      model.addAttribute("time_slot", params[2]);
+      model.addAttribute("study_size", params[3]);
       return "confirmation";
    }
    
