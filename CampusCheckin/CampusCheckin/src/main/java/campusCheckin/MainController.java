@@ -37,6 +37,7 @@ public class MainController {
     private BookingModelAssembler bo_assembler;
     private final BuildingRepository b_repository;
     private BuildingModelAssembler b_assembler;
+    public UserState uState;
     
     
     MainController(UserRepository u_repository, UserModelAssembler u_assembler,RoomRepository r_repository, RoomModelAssembler r_assembler, BookingRepository bo_repository, BookingModelAssembler bo_assembler,BuildingRepository b_repository, BuildingModelAssembler b_assembler) {
@@ -48,7 +49,7 @@ public class MainController {
     	this.bo_assembler = bo_assembler;
     	this.b_repository = b_repository;
     	this.b_assembler = b_assembler;
-    
+    	this.uState = new UserState();
     }
     
     
@@ -95,17 +96,38 @@ public class MainController {
 //                .body(entityModel);
     }
     
-    @PostMapping("/rooms/{buildingName}")
+    @GetMapping("getroom/{buildingName}")
     public ModelAndView goToBuilding(@PathVariable String buildingName ) {
+    	String bname= buildingName;
     	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
-    	
-        
+    	Long bID = null;
         List<Building> buildList = b_repository.findAll();
+        for (int i = 0; i < buildList.size(); i++) {
+            if(buildList.get(i).getBuildingName().equals(bname)) {
+            	bID = buildList.get(i).getId();
+            }
+        }
         
+        String[] rooms = new String[10];
+        String[] roomCap = new String[10];
+        int counter = 0;
+        List<Room> roomList = r_repository.findAll();
+        for (int i = 0; i < roomList.size(); i++) {
+            if(roomList.get(i).getBuilding_id() == bID) {
+            	rooms[counter] =  roomList.get(i).getRoom_name();
+            	roomCap[counter] = Integer.toString(roomList.get(i).getMax_capacity());
+            	counter = counter + 1;
+            }
+        }
+    	
+        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3]};
+        //Logger log = LoggerFactory.getLogger(MainController.class);
+        
+  	  	
         RedirectView rv = new RedirectView();
-        rv.setUrl("rooms/{BuildingName}");
+        rv.setUrl("/rooms/{buildingName}");
         ModelAndView mav = new ModelAndView(rv);
-        mav.addObject("buildingName", buildingName);
+        mav.addObject("params", params);
     	
         return mav;
 //        return ResponseEntity 

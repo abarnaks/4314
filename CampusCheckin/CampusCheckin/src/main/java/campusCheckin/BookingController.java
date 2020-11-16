@@ -30,32 +30,32 @@ public class BookingController {
         
     }
     
-    @GetMapping("/bookings")
-    public CollectionModel<EntityModel<Booking>> all() {
-
-        List<EntityModel<Booking>> books = repository.findAll()
-                .stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(books, linkTo(methodOn(RoomController.class).all()).withSelfRel());
-    }
-    
-    @GetMapping("/ShowBookings")
-    public ModelAndView showBookings() {
-    	ModelAndView mav = new ModelAndView("booking");
-    	return mav;
-    }
-    
-    @PostMapping("/bookings")
-    public ResponseEntity<?> newBooking(@RequestBody Booking newBooking) {
-
-        EntityModel<Booking> entityModel = assembler.toModel(repository.save(newBooking));
-
-        return ResponseEntity 
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-                .body(entityModel);
-    }
+//    @GetMapping("/bookings")
+//    public CollectionModel<EntityModel<Booking>> all() {
+//
+//        List<EntityModel<Booking>> books = repository.findAll()
+//                .stream()
+//                .map(assembler::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(books, linkTo(methodOn(RoomController.class).all()).withSelfRel());
+//    }
+//    
+//    @GetMapping("/ShowBookings")
+//    public ModelAndView showBookings() {
+//    	ModelAndView mav = new ModelAndView("booking");
+//    	return mav;
+//    }
+//    
+//    @PostMapping("/bookings")
+//    public ResponseEntity<?> newBooking(@RequestBody Booking newBooking) {
+//
+//        EntityModel<Booking> entityModel = assembler.toModel(repository.save(newBooking));
+//
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
+//    }
 
 //    // Single item
 //    @GetMapping("/booking/{id}")

@@ -31,9 +31,9 @@ class LoadDatabase {
         	log.info("Preloading " + buildingRepository.save(scottLib));
         	log.info("Preloading " + buildingRepository.save(steacieLib));
             log.info("Preloading " + roomRepository.save( new Room("Lecture Hall C", 20, lassonde.getId())));
-            log.info("Preloading " + roomRepository.save( new Room("Sandbox" , 10 ,bergeron.getId() )));
-            log.info("Preloading " + roomRepository.save(new Room("Study Room A", 5 , scottLib.getId())));
-            log.info("Preloading " + roomRepository.save(new Room("Study Room B", 5 , steacieLib.getId())));
+            log.info("Preloading " + roomRepository.save( new Room("Lecture Hall A" , 10 ,lassonde.getId() )));
+            log.info("Preloading " + roomRepository.save(new Room("Leture Hall B", 5 , lassonde.getId())));
+            log.info("Preloading " + roomRepository.save(new Room("EECS Lounge", 5 , lassonde.getId())));
             //log.info("Preloading " + userRepository.save(new User("Frodo", "Baggins", "thief")));
             
           //  log.info("testing" + roomRepository.findAll());

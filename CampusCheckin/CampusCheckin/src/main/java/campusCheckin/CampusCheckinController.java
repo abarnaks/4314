@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class CampusCheckinController {
@@ -90,10 +92,18 @@ public class CampusCheckinController {
       return "welcome";
    }
    
-   @RequestMapping("/rooms/{buildingName}")
-   public String book(Model model, @PathVariable String buildingName) {
-      //model.addAttribute("name", name);
-	  model.addAttribute("buildingName", buildingName);
+   @RequestMapping("rooms/{buildingName}")
+   public String book(Model model, String[] params) {
+	  
+      
+	  model.addAttribute("buildingName", params[0]);
+	  model.addAttribute("Room1", params[1]);
+	  model.addAttribute("Room2", params[2]);
+	  model.addAttribute("Room3", params[3]);
+	  model.addAttribute("Room4", params[4]);
+	  model.addAttribute("Room1cap", params[5]);
+	  
+	  
 	  // model
       return "rooms";
    }
