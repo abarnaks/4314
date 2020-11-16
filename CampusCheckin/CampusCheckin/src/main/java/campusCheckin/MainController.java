@@ -70,12 +70,12 @@ public class MainController {
     }
     
     
-    @GetMapping("/users")
-    CollectionModel<EntityModel<User>> all() {
+    @GetMapping("/bookings")
+    CollectionModel<EntityModel<Booking>> all() {
 
-        List<EntityModel<User>> users = u_repository.findAll()
+        List<EntityModel<Booking>> users = bo_repository.findAll()
                 .stream()
-                .map(u_assembler::toModel)
+                .map(bo_assembler::toModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(users, linkTo(methodOn(MainController.class).all()).withSelfRel());
@@ -111,9 +111,35 @@ public class MainController {
     	String build1Cap = Integer.toString(buildList.get(0).getMax_capacity());  
     	String build2Cap = Integer.toString(buildList.get(1).getMax_capacity());  
     	String build3Cap = Integer.toString(buildList.get(2).getMax_capacity());  
-    	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  
+    	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  List<Booking> bookList = bo_repository.findAll();
+    	Long[] roomIdList = new Long[10];
+    	int counter = 0;
+    	for(int i=0; i< bookList.size();i++) {
+    		if(bookList.get(i).getUser_Id()==this.userID) {
+    			roomIdList[counter] = bookList.get(i).getRoom_Id();
+    			counter = counter + 1;
+    		}
+    	}
+    	String[] roomNames = new String[10];
+    	counter =0;
+    	List<Room> roomList = r_repository.findAll();
     	
-    	String[] params = {this.userName, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
+    	for(int j =0 ; j<=2 ;j++) {
+    		for(int i=0; i< roomList.size();i++) {
+        		if(roomList.get(i).getId()==roomIdList[j]) {
+        			roomNames[counter] = roomList.get(i).getRoom_name();
+        			counter = counter + 1;
+        		}
+        	}
+    	}
+    	
+    	for(int i =0; i<=2;i++) {
+    		if(roomNames[i] == null) {
+    			roomNames[i] = "No Booking here";
+    		}
+    	}
+    	
+    	String[] params = {this.userName, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap,roomNames[0],roomNames[1],roomNames[2] };
     	mav.addObject("params", params);
         return mav;
     }
@@ -175,8 +201,55 @@ public class MainController {
     	String build2Cap = Integer.toString(buildList.get(1).getMax_capacity());  
     	String build3Cap = Integer.toString(buildList.get(2).getMax_capacity());  
     	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  
+    	List<Booking> bookList = bo_repository.findAll();
+    	Long[] roomIdList = new Long[10];
+    	int counter = 0;
+    	for(int i=0; i< bookList.size();i++) {
+    		if(bookList.get(i).getUser_Id()==this.userID) {
+    			roomIdList[counter] = bookList.get(i).getRoom_Id();
+    			counter = counter + 1;
+    		}
+    	}
+    	String[] roomNames = new String[10];
+    	counter =0;
+    	List<Room> roomList = r_repository.findAll();
     	
-    	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
+    	for(int j =0 ; j<=2 ;j++) {
+    		for(int i=0; i< roomList.size();i++) {
+        		if(roomList.get(i).getId()==roomIdList[j]) {
+        			roomNames[counter] = roomList.get(i).getRoom_name();
+        			counter = counter + 1;
+        		}
+        	}
+    	}
+    	
+//    	for(int i=0; i< roomList.size();i++) {
+//    		if(roomList.get(i).getId()==roomIdList[0]) {
+//    			roomNames[0] = roomList.get(i).getRoom_name();
+//    		}
+//    	}
+//    	for(int i=0; i< roomList.size();i++) {
+//    		if(roomList.get(i).getId()==roomIdList[1]) {
+//    			if(!roomNames[0].equals(roomList.get(i).getRoom_name())) {
+//    				roomNames[1] = roomList.get(i).getRoom_name();
+//    			}
+//    			
+//    		}
+//    	}
+//    	for(int i=0; i< roomList.size();i++) {
+//    		if(roomList.get(i).getId()==roomIdList[2]) {
+//    			if(!roomNames[1].equals(roomList.get(i).getRoom_name())) {
+//    				roomNames[2] = roomList.get(i).getRoom_name();
+//    			}
+//    		}
+//    	}
+    	for(int i =0; i<=2;i++) {
+    		if(roomNames[i] == null) {
+    			roomNames[i] = "No Booking here";
+    		}
+    	}
+    	
+    	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap,roomNames[0],roomNames[1],roomNames[2] };
     	mav.addObject("params", params);
         return mav;
 //        return ResponseEntity 
@@ -258,7 +331,7 @@ public class MainController {
     
     
     @PostMapping("getroom/{buildingName}")
-    public ModelAndView updateBooking(@PathVariable String buildingName,@RequestParam("date") String date,  @RequestParam("time_slot") String time_slot, @RequestParam("study_size") String study_size ) throws ParseException {
+    public ModelAndView updateBooking(@PathVariable String buildingName,@RequestParam("date") String date,  @RequestParam("time_slot") String time_slot, Model model) throws ParseException {
     	String bname= buildingName;
     	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
     	Long bID = null;
@@ -285,7 +358,7 @@ public class MainController {
         
         
         String timebooking = strDate + " "+hours;
-        
+        //
         
         this.currentBuilding = buildingName;
         this.currentTime_slot = timebooking;
@@ -402,7 +475,7 @@ public class MainController {
        
 
         
-        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3],timebooking,dateToday, currentCap[0], currentCap[1], currentCap[2], currentCap[3]};
+        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3],timeToday,dateToday, currentCap[0], currentCap[1], currentCap[2], currentCap[3]};
      
   	  	
         RedirectView rv = new RedirectView();
@@ -498,8 +571,56 @@ public class MainController {
     	String build2Cap = Integer.toString(buildList.get(1).getMax_capacity());  
     	String build3Cap = Integer.toString(buildList.get(2).getMax_capacity());  
     	String build4Cap = Integer.toString(buildList.get(3).getMax_capacity());  
+    	List<Booking> bookList = bo_repository.findAll();
+    	Long[] roomIdList = new Long[10];
+    	int counter = 0;
+    	for(int i=0; i< bookList.size();i++) {
+    		if(bookList.get(i).getUser_Id()==this.userID) {
+    			roomIdList[counter] = bookList.get(i).getRoom_Id();
+    			counter = counter + 1;
+    		}
+    	}
+    	String[] roomNames = new String[10];
+    	counter =0;
+    	List<Room> roomList = r_repository.findAll();
+    	for(int j =0 ; j<=2 ;j++) {
+    		for(int i=0; i< roomList.size();i++) {
+        		if(roomList.get(i).getId()==roomIdList[j]) {
+        			roomNames[counter] = roomList.get(i).getRoom_name();
+        			counter = counter + 1;
+        		}
+        	}
+    	}
     	
-    	String[] params = {userName, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
+//    	for(int i=0; i< roomList.size();i++) {
+//    		if(roomList.get(i).getId()==roomIdList[0]) {
+//    			roomNames[0] = roomList.get(i).getRoom_name();
+//    		}
+//    	}
+//    	for(int i=0; i< roomList.size();i++) {
+//    		if(roomList.get(i).getId()==roomIdList[1]) {
+//    			if(!roomNames[0].equals(roomList.get(i).getRoom_name())) {
+//    				roomNames[1] = roomList.get(i).getRoom_name();
+//    			}
+//    			
+//    		}
+//    	}
+//    	for(int i=0; i< roomList.size();i++) {
+//    		if(roomList.get(i).getId()==roomIdList[2]) {
+//    			if(!roomNames[1].equals(roomList.get(i).getRoom_name())) {
+//    				roomNames[2] = roomList.get(i).getRoom_name();
+//    			}
+//    		}
+//    	}
+    	for(int i =0; i<=2;i++) {
+    		if(roomNames[i] == null) {
+    			roomNames[i] = "No Booking here";
+    		}
+    	}
+    	
+    	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap,roomNames[0],roomNames[1],roomNames[2] };
+    	
+    	//String[] params = {userName, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap};
     	
     	if(check == 1) {
     		RedirectView rv = new RedirectView();
@@ -533,7 +654,8 @@ public class MainController {
 
         return u_assembler.toModel(user);
     }
-
+    
+    
     
     @GetMapping("/buildings")
     public CollectionModel<EntityModel<Building>> buildAll() {

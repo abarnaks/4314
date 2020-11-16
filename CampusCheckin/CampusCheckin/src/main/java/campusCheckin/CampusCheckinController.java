@@ -90,6 +90,9 @@ public class CampusCheckinController {
       model.addAttribute("building2_cap", params[6]);
       model.addAttribute("building3_cap", params[7]);
       model.addAttribute("building4_cap", params[8]);
+      model.addAttribute("Booking1", params[9]);
+      model.addAttribute("Booking2", params[10]);
+      model.addAttribute("Booking3", params[11]);
 	  // model.addAttribute("username", username);
 	  // model
       return "welcome";

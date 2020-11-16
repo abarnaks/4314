@@ -106,13 +106,13 @@
 								aria-labelledby="headingThree" data-parent="#accordion">
 								<div class="card-body">
 									<a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									     Booking 1 <span class="badge badge-primary badge-pill"></span>
+									     ${Booking1} <span class="badge badge-primary badge-pill"></span>
 									  </a>
 									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									  	 Booking 2 <span class="badge badge-primary badge-pill"></span>
+									  	  ${Booking2} <span class="badge badge-primary badge-pill"></span>
 									  </a>
 									  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									  	 Booking 3 <span class="badge badge-primary badge-pill"></span>
+									  	 ${Booking3} <span class="badge badge-primary badge-pill"></span>
 									  </a>
 			
 								</div>
