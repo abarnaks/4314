@@ -20,7 +20,8 @@
 **Concrete Architecture** [Document pdf](https://drive.google.com/file/d/1BOo_RWXfky3U-1aE1bFU3d10FpSjBPGd/view?usp=sharing "Concrete Architecture document")
 
 **Prototype 0.1** 
-Deployment issues are not resolved yet. Please download Source Code and run locally on your system"
+
+Deployment issues are not resolved yet. Please download Source Code and run locally on your system
 
 **Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
 
