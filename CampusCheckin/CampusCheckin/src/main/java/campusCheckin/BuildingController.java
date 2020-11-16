@@ -31,34 +31,34 @@ public class BuildingController {
         
     }
     
-    @GetMapping("/buildings")
-    public CollectionModel<EntityModel<Building>> all() {
-
-        List<EntityModel<Building>> buildings = repository.findAll()
-                .stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(buildings, linkTo(methodOn(BuildingController.class).all()).withSelfRel());
-    }
-    
-    @PostMapping("/buildings")
-    public ResponseEntity<?> newBuilding(@RequestBody Building newBuilding) {
-
-        EntityModel<Building> entityModel = assembler.toModel(repository.save(newBuilding));
-
-        return ResponseEntity 
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-                .body(entityModel);
-    }
-
-    // Single item
-    @GetMapping("/building/{id}")
-    EntityModel<Building> one(@PathVariable Long id) {
-
-        Building build = repository.findById(id) //
-                .orElseThrow(() -> new NotFoundException("building",id));
-
-        return assembler.toModel(build);
-    }
+////    @GetMapping("/buildings")
+////    public CollectionModel<EntityModel<Building>> all() {
+////
+////        List<EntityModel<Building>> buildings = repository.findAll()
+////                .stream()
+////                .map(assembler::toModel)
+////                .collect(Collectors.toList());
+////
+////        return CollectionModel.of(buildings, linkTo(methodOn(BuildingController.class).all()).withSelfRel());
+////    }
+////    
+////    @PostMapping("/buildings")
+////    public ResponseEntity<?> newBuilding(@RequestBody Building newBuilding) {
+////
+////        EntityModel<Building> entityModel = assembler.toModel(repository.save(newBuilding));
+////
+////        return ResponseEntity 
+////                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+////                .body(entityModel);
+////    }
+////
+////    // Single item
+////    @GetMapping("/building/{id}")
+////    EntityModel<Building> one(@PathVariable Long id) {
+////
+////        Building build = repository.findById(id) //
+////                .orElseThrow(() -> new NotFoundException("building",id));
+////
+////        return assembler.toModel(build);
+//    }
 }

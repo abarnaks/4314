@@ -14,7 +14,7 @@ class RoomModelAssembler implements RepresentationModelAssembler<Room, EntityMod
 		//return EntityModel.of(room, linkTo(methodOn(RoomController.class).all()).withRel("rooms"));
 
         return EntityModel.of(room, //
-                linkTo(methodOn(RoomController.class).one(room.getId())).withSelfRel(), linkTo(methodOn(RoomController.class).all()).withRel("rooms"));
+                linkTo(methodOn(MainController.class).one(room.getId())).withSelfRel(), linkTo(methodOn(MainController.class).all()).withRel("rooms"));
     	
     }
 }

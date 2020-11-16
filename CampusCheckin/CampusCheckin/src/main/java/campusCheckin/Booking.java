@@ -84,7 +84,7 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Building{" + "booking_id=" + this.booking_id + ", user_id='" + this.user_id + '\'' + ", room_id='" + this.room_id + '\'' + ", time_slot='" + this.time_slot + '\'' +  ", number_of_people='" + this.number_of_people + '\'' + '}';
+        return "Booking{" + "booking_id=" + this.booking_id + ", user_id='" + this.user_id + '\'' + ", room_id='" + this.room_id + '\'' + ", time_slot='" + this.time_slot + '\'' +  ", number_of_people='" + this.number_of_people + '\'' + '}';
     }
     
     

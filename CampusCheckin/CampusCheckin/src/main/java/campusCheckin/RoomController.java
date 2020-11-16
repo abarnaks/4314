@@ -31,36 +31,36 @@ public class RoomController {
         
     }
     
-    @GetMapping("/rooms")
-    public CollectionModel<EntityModel<Room>> all() {
-
-        List<EntityModel<Room>> rooms = repository.findAll()
-                .stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(rooms, linkTo(methodOn(RoomController.class).all()).withSelfRel());
-    }
-    
-    @PostMapping("/rooms")
-    public ResponseEntity<?> newRoom(@RequestBody Room newRoom) {
-
-        EntityModel<Room> entityModel = assembler.toModel(repository.save(newRoom));
-
-        return ResponseEntity 
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-                .body(entityModel);
-    }
+//    @GetMapping("/rooms")
+//    public CollectionModel<EntityModel<Room>> all() {
+//
+//        List<EntityModel<Room>> rooms = repository.findAll()
+//                .stream()
+//                .map(assembler::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(rooms, linkTo(methodOn(RoomController.class).all()).withSelfRel());
+//    }
+//    
+//    @PostMapping("/rooms")
+//    public ResponseEntity<?> newRoom(@RequestBody Room newRoom) {
+//
+//        EntityModel<Room> entityModel = assembler.toModel(repository.save(newRoom));
+//
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
+//    }
 
     // Single item
-    @GetMapping("/room/{id}")
-    EntityModel<Room> one(@PathVariable Long id) {
-
-        Room room = repository.findById(id) //
-                .orElseThrow(() -> new NotFoundException("room",id));
-
-        return assembler.toModel(room);
-    }
-	
+//    @GetMapping("/room/{id}")
+//    EntityModel<Room> one(@PathVariable Long id) {
+//
+//        Room room = repository.findById(id) //
+//                .orElseThrow(() -> new NotFoundException("room",id));
+//
+//        return assembler.toModel(room);
+//    }
+//	
 	
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class BookingController {
@@ -29,34 +30,31 @@ public class BookingController {
         
     }
     
-    @GetMapping("/bookings")
-    public CollectionModel<EntityModel<Booking>> all() {
-
-        List<EntityModel<Booking>> books = repository.findAll()
-                .stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(books, linkTo(methodOn(RoomController.class).all()).withSelfRel());
-    }
     
-    @PostMapping("/bookings")
-    public ResponseEntity<?> newBooking(@RequestBody Booking newBooking) {
+    
+//    @GetMapping("/ShowBookings")
+//    public ModelAndView showBookings() {
+//    	ModelAndView mav = new ModelAndView("booking");
+//    	return mav;
+//    }
+//    
+//    @PostMapping("/bookings")
+//    public ResponseEntity<?> newBooking(@RequestBody Booking newBooking) {
+//
+//        EntityModel<Booking> entityModel = assembler.toModel(repository.save(newBooking));
+//
+//        return ResponseEntity 
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
+//                .body(entityModel);
+//    }
 
-        EntityModel<Booking> entityModel = assembler.toModel(repository.save(newBooking));
-
-        return ResponseEntity 
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-                .body(entityModel);
-    }
-
-    // Single item
-    @GetMapping("/booking/{id}")
-    EntityModel<Booking> one(@PathVariable Long id) {
-
-        Booking book = repository.findById(id) //
-                .orElseThrow(() -> new NotFoundException("booking",id));
-
-        return assembler.toModel(book);
-    }
+//    // Single item
+//    @GetMapping("/booking/{id}")
+//    EntityModel<Booking> one(@PathVariable Long id) {
+//
+//        Booking book = repository.findById(id) //
+//                .orElseThrow(() -> new NotFoundException("booking",id));
+//
+//        return assembler.toModel(book);
+//    }
 }
