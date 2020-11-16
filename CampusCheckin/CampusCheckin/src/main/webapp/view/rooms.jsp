@@ -80,6 +80,13 @@
 						            </div>
 						             
 						          <div class="form-group">
+										<label>Study size</label> <input type="number"
+											class="form-control" name="size" id="size"
+											aria-describedby="emailHelp"
+											placeholder="size of your study group">
+								  </div>   
+						          
+						          <div class="form-group">
 								    <input type="submit" value="Availability">
 						          </div>
 						          

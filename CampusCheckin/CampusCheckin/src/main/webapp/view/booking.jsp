@@ -48,35 +48,23 @@
 						
 							<form>
 								 <div class="form-group">
-								    <label for="exampleFormControlSelect1">${buildingName}</label>
-								    
-								    
-								    <select class="form-control" id="exampleFormControlSelect1">
-								      <option>building name 1 (Get from database)</option>
-								      <option>building name 2</option> 
-								    </select>
+								    <label for="exampleFormControlSelect1"><h4>Building: ${buildingName}</h4></label> 
 								  </div>
 								  
 								  <div class="form-group">
-								    <label for="exampleFormControlSelect1">Room name</label>
-								    <select class="form-control" id="exampleFormControlSelect1">
-								      <option>room name 1 (Get from database)</option>
-								      <option>room name 2</option> 
-								    </select>
+								    <label><h4>Room: </h4></label>								   
 								  </div>
 								  
 								  <div class="form-group">
-								    <label>Study size</label>
-								    <input type="number" class="form-control" name="size" id="size" aria-describedby="emailHelp" placeholder="size of your study group">
+								  	<label><h4>Date and Time: </h4></label>
 								  </div>
 								  
 								  <div class="form-group">
-								  	 <label>Select date</label>
-						             <input type="date" id="date" name="date" aria-describedby="emailHelp" class="form-control" >
+								    <label><h4>Study Group Size: </h4></label>
 								  </div>
-			  
+	
 								  <div class="form-group">
-								    <input type="submit" value="availability">
+								    <input type="submit" value="Confirm">
 							      </div>
 								  
 							</form>	

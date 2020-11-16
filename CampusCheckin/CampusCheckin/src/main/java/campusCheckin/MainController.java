@@ -178,7 +178,7 @@ public class MainController {
         
        
         
-        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3],timebooking,dateToday, currentCap[0], currentCap[1], currentCap[2], currentCap[3]};
+        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3],timeToday,dateToday, currentCap[0], currentCap[1], currentCap[2], currentCap[3]};
         //Logger log = LoggerFactory.getLogger(MainController.class);
         
         
