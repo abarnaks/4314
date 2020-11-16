@@ -21,6 +21,8 @@
 
 **Prototype 0.1** 
 
+Prototype is a Spring Boot Application utilizing REST APIs for internal communication. Users can interact with GUIs and book a room at ease using the Campus Check-in Application. 
+
 Deployment issues are not resolved yet. Please download Source Code and run locally on your system
 
 **Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
