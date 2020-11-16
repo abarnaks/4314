@@ -26,6 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.format.DateTimeFormatter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;    
+
+
 @RestController
 public class MainController {
 
@@ -37,7 +43,7 @@ public class MainController {
     private BookingModelAssembler bo_assembler;
     private final BuildingRepository b_repository;
     private BuildingModelAssembler b_assembler;
-    public UserState uState;
+   
     
     
     MainController(UserRepository u_repository, UserModelAssembler u_assembler,RoomRepository r_repository, RoomModelAssembler r_assembler, BookingRepository bo_repository, BookingModelAssembler bo_assembler,BuildingRepository b_repository, BuildingModelAssembler b_assembler) {
@@ -49,7 +55,7 @@ public class MainController {
     	this.bo_assembler = bo_assembler;
     	this.b_repository = b_repository;
     	this.b_assembler = b_assembler;
-    	this.uState = new UserState();
+    	
     }
     
     
@@ -108,20 +114,60 @@ public class MainController {
             }
         }
         
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh a");  
+        LocalDateTime now = LocalDateTime.now();    
+        String timeToday = dtf.format(now);
+        
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("EEE MMM d ");  
+        LocalDateTime now1 = LocalDateTime.now();    
+        String dateToday = dtf1.format(now1);
+        
+        
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MMM d k");  
+        LocalDateTime booktime = LocalDateTime.now();    
+        String timebooking = dtf2.format(booktime);
+        
+        
+        
+        List<Booking> bookList = bo_repository.findAll();
+        
         String[] rooms = new String[10];
+        
         String[] roomCap = new String[10];
+        String[]currentCap = new String[10];
+        int roomIndex = 0;
         int counter = 0;
         List<Room> roomList = r_repository.findAll();
         for (int i = 0; i < roomList.size(); i++) {
             if(roomList.get(i).getBuilding_id() == bID) {
+            	//roomIndex = i;
             	rooms[counter] =  roomList.get(i).getRoom_name();
             	roomCap[counter] = Integer.toString(roomList.get(i).getMax_capacity());
             	counter = counter + 1;
+            	for(int j= 0; j < bookList.size() ;  j++) {
+            		if(bookList.get(j).getRoom_Id() == roomList.get(i).getId()) {
+            			
+            		}
+            	}
             }
         }
-    	
-        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3]};
+        
+       
+//        for (int i = 0; i < bookList.size(); i++) {
+//            if(bookList.get(i).g) {
+//            	bID = buildList.get(i).getId();
+//            }
+//        }
+        
+        for(int i =0; i< roomList.size(); i++) {
+        	
+        }
+        
+        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3], timebooking,dateToday};
         //Logger log = LoggerFactory.getLogger(MainController.class);
+        
+        
         
   	  	
         RedirectView rv = new RedirectView();

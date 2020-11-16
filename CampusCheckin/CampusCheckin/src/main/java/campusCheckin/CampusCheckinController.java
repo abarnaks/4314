@@ -102,8 +102,8 @@ public class CampusCheckinController {
 	  model.addAttribute("Room3", params[3]);
 	  model.addAttribute("Room4", params[4]);
 	  model.addAttribute("Room1cap", params[5]);
-	  
-	  
+	  model.addAttribute("time_h", params[9]);
+	  model.addAttribute("date", params[10]);
 	  // model
       return "rooms";
    }

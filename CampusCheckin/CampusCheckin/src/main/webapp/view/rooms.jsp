@@ -52,37 +52,47 @@
 						
 							<form>
 								 <div class="form-group">
-								    <label for="exampleFormControlSelect1">${buildingName}</label>
+								    <label for="exampleFormControlSelect1"><h4>Building: ${buildingName}</h4></label>
 								    <div class="form-group">
+								  	
+								  <div class="form-group">
 								  	 <label>Select date</label>
 						             <input type="date" id="date" name="date" value="getDate()" aria-describedby="emailHelp" class="form-control" >
-						             <label>Select Hour</label>
-						             <select name="hours" id="cars">
-						             	<option value="time_8">8</option>
-									    <option value="time_9">9</option>
-									    <option value="time_10">10</option>
-									    <option value="time_11">11</option>
-									    <option value="time_12">12</option>
-									    <option value="time_13">13</option>
-									    <option value="time_14">14</option>
-									    <option value="time_15">15</option>
-									    <option value="time_16">16</option>
-									    <option value="time_17">17</option>
-									    <option value="time_18">18</option>
-									    <option value="time_19">19</option>
-									    <option value="time_20">20</option>
+						           </div>
+						            
+						           <div class="form-group">
+						             <label for="cars">Select Hour</label>
+						             <select class="form-control" name="hours" id="cars">
+						             	<option value="time_8">8:00am - 9:00am</option>
+									    <option value="time_9">9:00am - 10:00am</option>
+									    <option value="time_10">10:00am -11:00am</option>
+									    <option value="time_11">11:00am - 12:00pm</option>
+									    <option value="time_12">12:00pm - 1:00pm</option>
+									    <option value="time_13">1:00pm - 2:00pm</option>
+									    <option value="time_14">2:00pm - 3:00pm</option>
+									    <option value="time_15">3:00pm - 4:00pm</option>
+									    <option value="time_16">4:00pm - 5:00pm</option>
+									    <option value="time_17">5:00pm - 6:00pm</option>
+									    <option value="time_18">6:00pm - 7:00pm</option>
+									    <option value="time_19">7:00pm - 8:00pm</option>
+									    <option value="time_20">8:00pm - 9:00pm</option>
 									 </select>
+						            </div>
 						             
-								  <div class="form-group">
-								    <input type="submit" value="availability">
-							      </div>	
+						          <div class="form-group">
+								    <input type="submit" value="Availability">
+						          </div>
+						          
+						          <p><h4>Rooms</h4></p>
+						             
+								 	
 								  </div>
 								    <div class="card">
 										<div class="card-header" id="headingOne">
 											<h5 class="mb-0">
 												<button class="btn btn-link" data-toggle="collapse"
 													data-target="#collapseOne" aria-expanded="true"
-													aria-controls="collapseOne">Rooms available at ${date}get date and ${$time_h} get time</button>
+													aria-controls="collapseOne">Rooms available on ${date} and ${time_h}</button>
 											</h5>
 										</div>
 			
@@ -91,26 +101,25 @@
 											<div class="card-body">
 												<div class="list-group">
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												    Room 1 <span class="badge badge-primary badge-pill">Current people/ Room cap Get building cap and current booking amount</span>
+												     ${Room1} <span class="badge badge-primary badge-pill">Current people/ ${Room1cap}</span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												  	 Room 2  <span class="badge badge-primary badge-pill"></span>
+												  	 ${Room2}  <span class="badge badge-primary badge-pill"></span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												  	Room 3 <span class="badge badge-primary badge-pill"></span>
+												  	${Room3}<span class="badge badge-primary badge-pill"></span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												  	 Room 4 <span class="badge badge-primary badge-pill"></span>
+												  	 ${Room4} <span class="badge badge-primary badge-pill"></span>
 												  </a>
 								
 												</div>
 											</div>
 										</div>
+																			
 									</div>			 
-								  </div>
-								  
-								
-			  
+															  
+								</div>
 								  
 							</form>	
 						
