@@ -135,7 +135,7 @@ public class MainController {
         String[] rooms = new String[10];
         
         String[] roomCap = new String[10];
-        String[]currentCap = new String[10];
+        String[] currentCap = new String[10];
         int roomIndex = 0;
         int counter = 0;
         List<Room> roomList = r_repository.findAll();
@@ -146,13 +146,18 @@ public class MainController {
             	roomCap[counter] = Integer.toString(roomList.get(i).getMax_capacity());
             	counter = counter + 1;
             	for(int j= 0; j < bookList.size() ;  j++) {
-            		if(bookList.get(j).getRoom_Id() == roomList.get(i).getId()) {
-            			
+            		if(bookList.get(j).getRoom_Id() == roomList.get(i).getId() && bookList.get(j).gettimeSlot().equals(timebooking)) {
+            			 currentCap[counter] = Integer.toString(bookList.get(j).getNumber_of_people());
             		}
             	}
             }
         }
         
+        for(int i =0; i < currentCap.length; i++) {
+        	if(currentCap[i] == null) {
+        		currentCap[i] = "0";
+        	}
+        }
        
 //        for (int i = 0; i < bookList.size(); i++) {
 //            if(bookList.get(i).g) {
@@ -160,11 +165,9 @@ public class MainController {
 //            }
 //        }
         
-        for(int i =0; i< roomList.size(); i++) {
-        	
-        }
+       
         
-        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3], timebooking,dateToday};
+        String[] params = {buildingName , rooms[0], rooms[1], rooms[2], rooms[3], roomCap[0],roomCap[1],roomCap[2],roomCap[3],timebooking,dateToday, currentCap[0], currentCap[1], currentCap[2], currentCap[3]};
         //Logger log = LoggerFactory.getLogger(MainController.class);
         
         

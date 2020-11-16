@@ -101,7 +101,7 @@
 											<div class="card-body">
 												<div class="list-group">
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												     ${Room1} <span class="badge badge-primary badge-pill">Current people/ ${Room1cap}</span>
+												     ${Room1} <span class="badge badge-primary badge-pill">${CurrentCap1} / ${Room1cap}</span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 												  	 ${Room2}  <span class="badge badge-primary badge-pill"></span>
