@@ -30,17 +30,8 @@ public class BookingController {
         
     }
     
-//    @GetMapping("/bookings")
-//    public CollectionModel<EntityModel<Booking>> all() {
-//
-//        List<EntityModel<Booking>> books = repository.findAll()
-//                .stream()
-//                .map(assembler::toModel)
-//                .collect(Collectors.toList());
-//
-//        return CollectionModel.of(books, linkTo(methodOn(RoomController.class).all()).withSelfRel());
-//    }
-//    
+    
+    
 //    @GetMapping("/ShowBookings")
 //    public ModelAndView showBookings() {
 //    	ModelAndView mav = new ModelAndView("booking");

@@ -104,13 +104,13 @@
 												     ${Room1} <span class="badge badge-primary badge-pill">${CurrentCap1} / ${Room1cap}</span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												  	 ${Room2}  <span class="badge badge-primary badge-pill"></span>
+												  	 ${Room2}  <span class="badge badge-primary badge-pill">${CurrentCap2} / ${Room2cap}</span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												  	${Room3}<span class="badge badge-primary badge-pill"></span>
+												  	${Room3}<span class="badge badge-primary badge-pill">${CurrentCap3} / ${Room3cap}</span>
 												  </a>
 												  <a href="/booking" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-												  	 ${Room4} <span class="badge badge-primary badge-pill"></span>
+												  	 ${Room4} <span class="badge badge-primary badge-pill">${CurrentCap4} / ${Room4cap}</span>
 												  </a>
 								
 												</div>

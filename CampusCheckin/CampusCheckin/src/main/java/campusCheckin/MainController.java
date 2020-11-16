@@ -70,7 +70,16 @@ public class MainController {
         return CollectionModel.of(users, linkTo(methodOn(MainController.class).all()).withSelfRel());
     }
     
-    
+//    @GetMapping("/bookings")
+//    public CollectionModel<EntityModel<Booking>> getBookings() {
+//
+//        List<EntityModel<Booking>> books = bo_repository.findAll()
+//                .stream()
+//                .map(bo_assembler::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(books, linkTo(methodOn(MainController.class).all()).withSelfRel());
+//    }
 
     @PostMapping("/users")
     public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
@@ -138,6 +147,7 @@ public class MainController {
         String[] currentCap = new String[10];
         int roomIndex = 0;
         int counter = 0;
+        int bcounter= 0;
         List<Room> roomList = r_repository.findAll();
         for (int i = 0; i < roomList.size(); i++) {
             if(roomList.get(i).getBuilding_id() == bID) {
@@ -147,7 +157,8 @@ public class MainController {
             	counter = counter + 1;
             	for(int j= 0; j < bookList.size() ;  j++) {
             		if(bookList.get(j).getRoom_Id() == roomList.get(i).getId() && bookList.get(j).gettimeSlot().equals(timebooking)) {
-            			 currentCap[counter] = Integer.toString(bookList.get(j).getNumber_of_people());
+            			 currentCap[bcounter] = Integer.toString(bookList.get(j).getNumber_of_people());
+            			 bcounter += 1;
             		}
             	}
             }
