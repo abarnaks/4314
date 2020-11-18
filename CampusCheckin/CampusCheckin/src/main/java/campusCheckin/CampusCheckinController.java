@@ -21,12 +21,6 @@ public class CampusCheckinController {
       return "index";
    }
 	
-//   @RequestMapping({"/", "/login"})
-//   public String index() {
-//	 
-//     return "index";
-//  }
-//	
    @PostMapping("/hello")
    public String sayHello(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, Model model) {
       model.addAttribute("name", name);
@@ -38,8 +32,6 @@ public class CampusCheckinController {
    
    @RequestMapping("/signup")
    public String signupPage() {
-     // model.addAttribute("username", username);
-     // model.addAttribute("password", password);
       return "createProfile";
    }
    
@@ -53,31 +45,7 @@ public class CampusCheckinController {
      return "booking";
    }
    
-   
-//   @RequestMapping("/login")
-//   public String login() {
-//     // model.addAttribute("username", username);
-//     // model.addAttribute("password", password);
-//      return "homelogin";
-//   }
-   
-//   @RequestMapping("/welcome")
-//   public String available(Model model, String name,String building1,String building2,String building3,String building4, String building1_cap, String building2_cap,String building3_cap ,String building4_cap) {
-//	  
-//      model.addAttribute("name", name);
-//      model.addAttribute("building1", building1);
-//      model.addAttribute("building2", building2);
-//      model.addAttribute("building3", building3);
-//      model.addAttribute("building4", building4);
-//      model.addAttribute("building1_cap", building1_cap);
-//      model.addAttribute("building2_cap", building2_cap);
-//      model.addAttribute("building3_cap", building3_cap);
-//      model.addAttribute("building4_cap", building4_cap);
-//	  // model.addAttribute("username", username);
-//	  // model
-//      return "welcome";
-//   }
-   
+  
    @RequestMapping("/welcome")
    public String available(Model model, String[] params) {
 	  
@@ -93,8 +61,6 @@ public class CampusCheckinController {
       model.addAttribute("Booking1", params[9]);
       model.addAttribute("Booking2", params[10]);
       model.addAttribute("Booking3", params[11]);
-	  // model.addAttribute("username", username);
-	  // model
       return "welcome";
    }
    

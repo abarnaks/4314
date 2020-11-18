@@ -65,7 +65,7 @@
 								<div class="card-body">
 									<div class="list-group">
 									  <a href="getroom/${building1}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-									    ${building1} <span class="badge badge-primary badge-pill">50 / ${building1_cap}</span>
+									    ${building1} <span class="badge badge-primary badge-pill">${building1_cap}</span>
 									  </a>
 									  <a href="getroom/${building2}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 									  	 ${building2} <span class="badge badge-primary badge-pill">${building2_cap}</span>

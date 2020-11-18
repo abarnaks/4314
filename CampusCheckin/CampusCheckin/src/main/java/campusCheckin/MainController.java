@@ -81,17 +81,6 @@ public class MainController {
         return CollectionModel.of(users, linkTo(methodOn(MainController.class).all()).withSelfRel());
     }
     
-//    @GetMapping("/bookings")
-//    public CollectionModel<EntityModel<Booking>> getBookings() {
-//
-//        List<EntityModel<Booking>> books = bo_repository.findAll()
-//                .stream()
-//                .map(bo_assembler::toModel)
-//                .collect(Collectors.toList());
-//
-//        return CollectionModel.of(books, linkTo(methodOn(MainController.class).all()).withSelfRel());
-//    }
-    
     
     @GetMapping("/goBackHome")
     public ModelAndView returnHome() {
@@ -180,7 +169,7 @@ public class MainController {
 
     @PostMapping("/users")
     public ModelAndView newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
-    	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+ 
     	User newUser = new User(name,studid,em,pass);
     	this.userID = newUser.getId();
     	this.userName = name;
@@ -222,27 +211,6 @@ public class MainController {
         		}
         	}
     	}
-    	
-//    	for(int i=0; i< roomList.size();i++) {
-//    		if(roomList.get(i).getId()==roomIdList[0]) {
-//    			roomNames[0] = roomList.get(i).getRoom_name();
-//    		}
-//    	}
-//    	for(int i=0; i< roomList.size();i++) {
-//    		if(roomList.get(i).getId()==roomIdList[1]) {
-//    			if(!roomNames[0].equals(roomList.get(i).getRoom_name())) {
-//    				roomNames[1] = roomList.get(i).getRoom_name();
-//    			}
-//    			
-//    		}
-//    	}
-//    	for(int i=0; i< roomList.size();i++) {
-//    		if(roomList.get(i).getId()==roomIdList[2]) {
-//    			if(!roomNames[1].equals(roomList.get(i).getRoom_name())) {
-//    				roomNames[2] = roomList.get(i).getRoom_name();
-//    			}
-//    		}
-//    	}
     	for(int i =0; i<=2;i++) {
     		if(roomNames[i] == null) {
     			roomNames[i] = "No Booking here";
@@ -252,9 +220,6 @@ public class MainController {
     	String[] params = {name, build1, build2, build3, build4, build1Cap,build2Cap, build3Cap, build4Cap,roomNames[0],roomNames[1],roomNames[2] };
     	mav.addObject("params", params);
         return mav;
-//        return ResponseEntity 
-//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-//                .body(entityModel);
     }
     @GetMapping("prebookroom/{roomName}")
     public ModelAndView prebookingRoom(@PathVariable String roomName) {
@@ -271,10 +236,7 @@ public class MainController {
         List<Room> roomList = r_repository.findAll();
         for (int i = 0; i < roomList.size(); i++) {
             if(roomList.get(i).getRoom_name().equals(roomName)) {
-            	//roomIndex = i;
-            	//rooms[counter] =  roomList.get(i).getRoom_name();
             	roomCap = Integer.toString(roomList.get(i).getMax_capacity());
-            	//counter = counter + 1;
             	for(int j= 0; j < bookList.size() ;  j++) {
             		if(bookList.get(j).getRoom_Id() == roomList.get(i).getId() && bookList.get(j).gettimeSlot().equals(this.currentTime_slot)) {
             			 currentCap = Integer.toString(bookList.get(j).getNumber_of_people());
@@ -287,10 +249,7 @@ public class MainController {
         if(currentCap == null) {
         	currentCap = "0";
         }
-    	
     	String[] params = {roomName , this.currentBuilding, this.currentTime_slot, currentCap, roomCap};
-        //String[] params = {roomName, this.currentBuilding, this.currentTime_slot};
-   	  	
          RedirectView rv = new RedirectView();
          rv.setUrl("/booking/{roomName}");
          ModelAndView mav = new ModelAndView(rv);
@@ -329,11 +288,9 @@ public class MainController {
     }
     
     
-    
     @PostMapping("getroom/{buildingName}")
     public ModelAndView updateBooking(@PathVariable String buildingName,@RequestParam("date") String date,  @RequestParam("time_slot") String time_slot, Model model) throws ParseException {
     	String bname= buildingName;
-    	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
     	Long bID = null;
         List<Building> buildList = b_repository.findAll();
         for (int i = 0; i < buildList.size(); i++) {
@@ -492,53 +449,6 @@ public class MainController {
         EntityModel<User> entityModel = u_assembler.toModel(u_repository.save(newUser));
     }
     
-//    @PostMapping("/users")
-//    ResponseEntity<?> newEmployee(@RequestBody User newUser) {
-//
-//        EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
-//
-//        return ResponseEntity 
-//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-//                .body(entityModel);
-//    }
-    
-    
-//    @PostMapping("/users")
-//    public RedirectView  newUser(@RequestParam("name") String name, @RequestParam("studid") String studid, @RequestParam("em") String em, @RequestParam("pass") String pass,Model model) {
-//  	//Logger log = LoggerFactory.getLogger(LoadDatabase.class);
-//    	User newUser = new User(name,studid,em,pass);
-//        EntityModel<User> entityModel = u_assembler.toModel(u_repository.save(newUser));
-//        model.addAttribute("name", name);
-//        RedirectView rv = new RedirectView();
-//        rv.setUrl("welcome");
-//		return rv;
-//    
-//    }
-//    @PostMapping("/welcome")
-//    public ModelAndView handleRequest (@RequestParam String name, Model model) {
-//        model.addAttribute("name", name);
-//        ModelAndView mav = new ModelAndView();
-//        List<Building> buildList = b_repository.findAll();
-//    	String build1 = buildList.get(0).getBuildingName();
-//    	String build2 = buildList.get(1).getBuildingName();
-//    	String build3 = buildList.get(2).getBuildingName();
-//    	String build4 = buildList.get(3).getBuildingName();
-//    	int build1Cap = buildList.get(0).getMax_capacity();
-//    	int build2Cap = buildList.get(1).getMax_capacity();
-//    	int build3Cap = buildList.get(2).getMax_capacity();
-//    	int build4Cap = buildList.get(3).getMax_capacity();
-//    	
-//    	mav.addObject("building1", build1);
-//    	mav.addObject("building2", build2);
-//    	mav.addObject("building3", build3);
-//    	mav.addObject("building4", build4);
-//    	mav.addObject("building1_cap", build1Cap);
-//    	mav.addObject("building2_cap", build2Cap);
-//    	mav.addObject("building3_cap", build3Cap);
-//    	mav.addObject("building4_cap", build4Cap);
-//    	mav.setViewName("welcome");
-//        return mav;
-//    }
     
     @PostMapping("/login")
     public ModelAndView loginUser(@RequestParam("name") String name, @RequestParam("pass") String pass,Model model) {
@@ -592,26 +502,7 @@ public class MainController {
         	}
     	}
     	
-//    	for(int i=0; i< roomList.size();i++) {
-//    		if(roomList.get(i).getId()==roomIdList[0]) {
-//    			roomNames[0] = roomList.get(i).getRoom_name();
-//    		}
-//    	}
-//    	for(int i=0; i< roomList.size();i++) {
-//    		if(roomList.get(i).getId()==roomIdList[1]) {
-//    			if(!roomNames[0].equals(roomList.get(i).getRoom_name())) {
-//    				roomNames[1] = roomList.get(i).getRoom_name();
-//    			}
-//    			
-//    		}
-//    	}
-//    	for(int i=0; i< roomList.size();i++) {
-//    		if(roomList.get(i).getId()==roomIdList[2]) {
-//    			if(!roomNames[1].equals(roomList.get(i).getRoom_name())) {
-//    				roomNames[2] = roomList.get(i).getRoom_name();
-//    			}
-//    		}
-//    	}
+
     	for(int i =0; i<=2;i++) {
     		if(roomNames[i] == null) {
     			roomNames[i] = "No Booking here";
@@ -633,16 +524,12 @@ public class MainController {
             rv.setUrl("/login");
             mav = new ModelAndView(rv);
             mav.addObject("error_msg", "Invalid login, username and password don't match");
-    		//mav.addObject("params", params);
+
     	}
         
-//        mav.addObject("name", name);
-//        mav.addObject("studid", studid);
-//        mav.addObject("em", em);
+
         return mav;
-//        return ResponseEntity 
-//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) 
-//                .body(entityModel);
+
     }
     
     // Single item
