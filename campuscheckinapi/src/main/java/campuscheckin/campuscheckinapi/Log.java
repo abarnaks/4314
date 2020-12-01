@@ -40,6 +40,22 @@ public class Log {
         return this.Id;
     }
 	
+	public String getAction() {
+		return this.action;
+	}
+	
+	public Long getTimeTaken() {
+		return this.timeTaken;
+	}
+	
+	public String getSuccess() {
+		return this.success;
+	}
+	
+	public String getCurrentTime() {
+		return this.currentTime;
+	}
+	
 	@Override
 	public String toString() {
 		return "Log{" + "log_id=" + this.Id + ", startTime='" + this.startTime + '\'' + ", endTime='" + this.endTime + '\'' + ", success='" + this.success + '\'' +  ", timeTaken='" + this.timeTaken + '\'' + '}';
