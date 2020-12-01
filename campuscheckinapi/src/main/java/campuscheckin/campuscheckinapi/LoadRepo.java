@@ -25,9 +25,9 @@ public class LoadRepo implements CommandLineRunner {
 	
 	@Override
 	public void run(String...strings) throws Exception {
-		User bob = new User("Bob" ,"Bob123" ,"1234" ,"Bob@student.com","123456" );
-		User jilly = new User("Jilly" ,"Jilly1996", "123412" ,"Jil@student.com","123456" );
-		User rob = new User("Rob" , "Robbie" , "122334" ,"Rob@student.com","123456" );
+		User bob = new User("Bob" ,"Bob123" ,"Bob@student.com","1234"  );
+		User jilly = new User("Jilly" ,"Jilly1996","Jil@student.com", "123412" );
+		User rob = new User("Rob" , "Robbie" ,"Rob@student.com", "122334" );
 		
 		Building Lassonde = new Building("Lassonde", "Campus Walk" , 200, 10);
 		Building ross = new Building("Ross Building", "Campus Walk" , 200, 10);
