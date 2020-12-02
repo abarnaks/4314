@@ -20,12 +20,9 @@ export default class LoginPage extends Component {
         axios.post('/user/login', data,config )
             .then(res => {
                 console.log(res.data);
-                if(!res.data.localeCompare("false")){
-                    //do nothing
-                } else {
-                    localStorage.setItem('userId', res.data);
-                    window.location.reload();
-                }
+                localStorage.setItem('userId', res.data);
+                window.location.reload();
+                
             })
             .catch(err => {
                 console.log(err)
@@ -48,25 +45,34 @@ export default class LoginPage extends Component {
             )
         } else {
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <h3>Sign In</h3>
-    
-                    <div className="form-group">
-                        <label>Email address</label>
-                        <input type="text" className="form-control" placeholder="Enter User Name"
-                            onChange={e => this.userName = e.target.value }/>
+                <div className="card textcenter mt-3">
+                    <div class="card-header">
+                        <h5>Login</h5>
                     </div>
-    
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter password" 
-                            onChange={e => this.password = e.target.value}/>
+
+                    <div className="card-body">
+
+                        <form onSubmit={this.handleSubmit}>
+
+
+                            <div className="form-group">
+                                <label>Email address</label>
+                                <input type="text" className="form-control" placeholder="Enter User Name"
+                                    onChange={e => this.userName = e.target.value} />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input type="password" className="form-control" placeholder="Enter password"
+                                    onChange={e => this.password = e.target.value} />
+                            </div>
+                            <button type="submit" className="btn btn-primary btn-block">Sign In</button>
+                            <p className="forgot-password text-right">
+                                Need an account, sign up<a href="/signup"> here!</a>
+                            </p>
+                        </form>
                     </div>
-                    <button type="submit" className="btn btn-primary btn-block">Sign In</button>
-                    <p className="forgot-password text-right">
-                        Need an account, sign up<a href="/signup"> here!</a>
-                    </p>
-                </form>
+                </div>
             );
         }
        

@@ -5,12 +5,14 @@ import { Route , BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import WelcomePage from './pages/WelcomePage';
+import BookingPage from './pages/BookingPage';
+import LogPage from './pages/LogPage';
 import Navbar from './layout/Navbar';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 export default class App extends Component{
-  state = {};
+  state = { expand: false };
 
   componentDidMount = () => {
     const userId = localStorage.getItem('userId');
@@ -25,27 +27,40 @@ export default class App extends Component{
             }
         )
 };
+
+toggleExpan() {
+  this.setState({
+    expand: !this.state.expand
+  })
+}
+
   render() {
+    
     return (
+      <main className="page bg-white" id="petratings">
       <Router>
-      <div className="App">
+     
         <Navbar user={this.state.user}/>
   
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Switch>
-              <Route path="/login" component={LoginPage} />
-              <Route path="/signup" component={SignupPage} />
-              <Route path="/" component={ () => <WelcomePage user={this.state.user}/>} />
-            </Switch>
+        <div className="container">
+            <div className="row">
+              <div className="col-md-12 bg-white">
+                <div className="container">
+                  <Switch>
+                    <Route path="/logs" component={LogPage} />
+                    <Route path="/login" component={LoginPage} expand = {this.state.expand} toggleExpand = {this.toggleExpand} />
+                    <Route path="/signup" component={SignupPage} />
+                    <Route path="/booking" component={BookingPage} />
+                    <Route path="/" component={ () => <WelcomePage user={this.state.user}/>} />
+                  </Switch>
+                </div>
+              </div>
           </div>
         </div>
-      </div>
-      </Router>
      
+      </Router>
+      </main>
     );
   }
   
 }
-
-
