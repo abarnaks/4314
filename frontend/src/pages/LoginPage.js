@@ -20,8 +20,13 @@ export default class LoginPage extends Component {
         axios.post('/user/login', data,config )
             .then(res => {
                 console.log(res.data);
-                localStorage.setItem('userId', res.data);
-                window.location.reload();
+                if(!res.data.localeCompare("false")){
+                    //do nothing
+                } else {
+                    localStorage.setItem('userId', res.data);
+                    window.location.reload();
+                }
+               
                 
             })
             .catch(err => {
