@@ -26,8 +26,6 @@ export default class LoginPage extends Component {
                     localStorage.setItem('userId', res.data);
                     window.location.reload();
                 }
-               
-                
             })
             .catch(err => {
                 console.log(err)

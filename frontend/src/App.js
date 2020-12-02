@@ -25,12 +25,8 @@ export default class App extends Component{
             }
         )
 };
-
-
   render() {
-    
     return (
-      
       <Router>
       <div className="App">
         <Navbar user={this.state.user}/>
