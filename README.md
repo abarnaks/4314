@@ -28,13 +28,13 @@ Deployment issues are not resolved yet. Please download Source Code and run loca
 
 **Prototype 0.2**
 
-Api Link: (https://campuscheckin.herokuapp.com/)
+Api Link: [Campus checkin api](https://campuscheckin.herokuapp.com/)
 
-Website Link: (https://campuscheckin2021-165t2w2fs.vercel.app/)
+Website Link: [Campus Checkin](https://campuscheckin2021-165t2w2fs.vercel.app/)
 
-To view the logs: (https://campuscheckin2021-165t2w2fs.vercel.app/logs)
+To view the logs: [Campus Checkin logs](https://campuscheckin2021-165t2w2fs.vercel.app/logs)
 
-To view the analyze: (https://campuscheckin2021-165t2w2fs.vercel.app/analyze)
+To view the analyze: [Campus Checkin analysis](https://campuscheckin2021-165t2w2fs.vercel.app/analyze)
 
 **Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
 
