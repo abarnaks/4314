@@ -43,7 +43,7 @@ logged into an account to view the log and analyze pages.**
 
 **Source Code** 
 
-Campus Checkin front-end application: [GitHub Repository](https://github.com/abarnaks/campuscheckin Campus Checkin app)
+Campus Checkin front-end application: [GitHub Repository](https://github.com/abarnaks/campuscheckin "Campus Checkin app")
 
 Campus Checkin back-end api: [Github Repository](https://github.com/abarnaks/checkinapi)
 
