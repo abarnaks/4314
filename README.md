@@ -36,6 +36,13 @@ To view the logs: [Campus Checkin logs](https://campuscheckin2021-165t2w2fs.verc
 
 To view the analyze: [Campus Checkin analysis](https://campuscheckin2021-165t2w2fs.vercel.app/analyze)
 
-**Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
+**Source Code** 
+
+Campus Checkin front-end application: [GitHub Repository](https://github.com/abarnaks/campuscheckin Campus Checkin app)
+
+Campus Checkin back-end api: [Github Repository](https://github.com/abarnaks/checkinapi)
+
+
+Main work area: [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
 
 
