@@ -25,6 +25,17 @@ Prototype is a Spring Boot Application utilizing REST APIs for internal communic
 
 Deployment issues are not resolved yet. Please download Source Code and run locally on your system.
 
+
+**Prototype 0.2**
+
+Api Link: https://campuscheckin.herokuapp.com/
+
+Website Link: https://campuscheckin2021-165t2w2fs.vercel.app/
+
+To view the logs: https://campuscheckin2021-165t2w2fs.vercel.app/logs
+
+To view the analyze: https://campuscheckin2021-165t2w2fs.vercel.app/analyze
+
 **Source Code** [Github repository](https://github.com/abarnaks/4314 "Campus Checkin repository")
 
 
